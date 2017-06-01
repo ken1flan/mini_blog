@@ -27,6 +27,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'rubocop', require: false
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
