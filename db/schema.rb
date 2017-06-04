@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170601223552) do
   create_table "users", force: :cascade do |t|
     t.string "nickname", limit: 64, null: false
     t.string "icon_url"
-    t.string "text"
+    t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
