@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "blogs/new", type: :view do
+  let(:author){ User.create(nickname: "NickName") }
+
   before(:each) do
     assign(:blog, Blog.new(
-      :title => "MyText",
-      :body => "MyText",
-      :author_id => 1
+      title: "MyTitle",
+      body: "MyBody",
+      author: author
     ))
   end
 
