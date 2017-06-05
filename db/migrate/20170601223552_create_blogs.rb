@@ -7,5 +7,7 @@ class CreateBlogs < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_index :blogs, :author_id
   end
 end

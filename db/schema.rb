@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170603123238) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_blogs_on_author_id"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -26,6 +27,8 @@ ActiveRecord::Schema.define(version: 20170603123238) do
     t.string "uid", limit: 64, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

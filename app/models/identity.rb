@@ -9,6 +9,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_identities_on_provider_and_uid  (provider,uid) UNIQUE
+#  index_identities_on_user_id           (user_id)
+#
 
 class Identity < ApplicationRecord
   belongs_to :user
