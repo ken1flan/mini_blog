@@ -33,7 +33,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
-  gem 'dotenv'
+  gem 'dotenv-rails'
 end
 
 group :development do
