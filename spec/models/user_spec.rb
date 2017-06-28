@@ -13,5 +13,54 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '.create_with_identity' do
+    subject(:user){ User.create_with_identity(auth) }
+
+    context 'When auth is valid' do
+      let(:auth){ {info: {nickname: 'somebody'}, provider: 'twitter', uid: '12345678'} }
+
+      it 'expects user create with identity' do
+        created_user = User.find(user.id)
+        identity = created_user.identities.first
+        expect(created_user.nickname).to eql(auth[:info][:nickname])
+        expect(identity.provider).to eql(auth[:provider])
+        expect(identity.uid).to eql(auth[:uid])
+      end
+    end
+
+    context 'When auth is nil' do
+      let(:auth){ nil }
+
+      it 'is expected to raise error' do
+        expect { subject }.to raise_error NoMethodError
+      end
+    end
+
+    context 'When invalid auth' do
+      let(:auth){ {invalid: 'test' } }
+
+      it 'is expected to raise error' do
+        expect { subject }.to raise_error NoMethodError
+      end
+    end
+  end
+
+  describe '.find_from' do
+    subject(:user){ User.find_from(auth) }
+    let(:auth){ {info: {nickname: 'somebody'}, provider: 'twitter', uid: '12345678'} }
+
+    context 'When user does not exist' do
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'When user exist' do
+      before { User.create_with_identity(auth) }
+      it 'expects to find user' do
+        identity = user.identities.first
+        expect(identity.provider).to eql(auth[:provider])
+        expect(identity.uid).to eql(auth[:uid])
+      end
+    end
+  end
 end

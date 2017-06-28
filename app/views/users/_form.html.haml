@@ -6,14 +6,17 @@
         - @user.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :nickname
-    = f.text_field :nickname
-  .field
-    = f.label :icon_url
-    = f.text_field :icon_url
-  .field
-    = f.label :introduction
-    = f.text_field :introduction
+  .field.form-group.row
+    = f.label :nickname, class: 'col-2 col-form-label'
+    .col-10
+      = f.text_field :nickname, type: 'text', class: 'form-control'
+  .field.form-group.row
+    = f.label :icon_url, class: 'col-2 col-form-label'
+    .col-10
+      = f.text_field :icon_url, class: 'form-control'
+  .field.form-group.row
+    = f.label :introduction, class: 'col-2 col-form-label'
+    .col-10
+      = f.text_area :introduction, rows: 5, class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-primary'

@@ -9,6 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_blogs_on_author_id  (author_id)
+#
 
 require 'rails_helper'
 

@@ -1,14 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Nickname:
+%h1.card-title
+  %img.img-thumbnail{src: @user.icon_url}
   = @user.nickname
-%p
-  %b Icon url:
-  = @user.icon_url
-%p
-  %b Introduction:
-  = @user.introduction
+
+.card
+  .card-block
+    = simple_format @user.introduction
 
 = link_to 'Edit', edit_user_path(@user)
 \|

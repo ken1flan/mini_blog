@@ -1,0 +1,11 @@
+%nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+  -#
+    %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+  %a.navbar-brand{:href => "#"} Navbar
+  %ul.nav
+    %li.nav-item
+      - if user_signed_in?
+        = link_to 'sign out', signout_path
+      - else
+        = link_to 'sign in', '/auth/google_oauth2'

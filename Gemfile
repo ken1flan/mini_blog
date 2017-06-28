@@ -21,16 +21,19 @@ gem 'jquery-rails'
 gem 'faml'
 gem 'haml-rails'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
+  gem 'dotenv-rails'
 end
 
 group :development do
