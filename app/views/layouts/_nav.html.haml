@@ -6,6 +6,6 @@
   %ul.nav
     %li.nav-item
       - if user_signed_in?
-        = link_to 'sign out', signout_path
+        = link_to 'Sign Out', signout_path
       - else
-        = link_to 'sign in', '/auth/google_oauth2'
+        = link_to 'Sign In', '/auth/google_oauth2'
