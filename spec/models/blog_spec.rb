@@ -17,5 +17,23 @@
 require 'rails_helper'
 
 RSpec.describe Blog, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#editable?' do
+    subject { blog.editable?(user) }
+
+    let(:author){ create(:user) }
+    let(:no_author){ create(:user) }
+    let(:blog){ create(:blog, author: author)}
+
+    context 'When user is blog owner' do
+      let(:user){ author }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context 'When user is not blog owner' do
+      let(:user){ no_author }
+
+      it { is_expected.to be_falsy }
+    end
+  end
 end
