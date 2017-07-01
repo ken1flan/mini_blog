@@ -17,8 +17,8 @@
 
 FactoryGirl.define do
   factory :identity do
-    user_id 1
-    provider "MyString"
-    uid "MyString"
+    user_id nil
+    provider 'provider'
+    sequence :uid { |n| "uid#{n}" }
   end
 end
