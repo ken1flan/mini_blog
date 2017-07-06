@@ -1,15 +1,18 @@
 %p#notice= notice
 
-%p
-  %b Title:
+%h1
   = @blog.title
-%p
-  %b Body:
-  = @blog.body
-%p
-  %b Author:
-  = @blog.author_id
 
-= link_to 'Edit', edit_blog_path(@blog)
-\|
+%p
+  = simple_format @blog.body
+
+%p
+  Written by
+  = link_to @blog.author.nickname, user_path(@blog.author)
+
+- if @blog.editable?(current_user)
+  = link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary'
+  \|
+  = link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' }
+  \|
 = link_to 'Back', blogs_path

@@ -1,24 +1,16 @@
 %h1 Listing blogs
 
-%table
+%table.table
   %thead
     %tr
       %th Title
-      %th Body
       %th Author
-      %th
-      %th
-      %th
 
   %tbody
     - @blogs.each do |blog|
       %tr
-        %td= blog.title
-        %td= blog.body
-        %td= blog.author_id
-        %td= link_to 'Show', blog
-        %td= link_to 'Edit', edit_blog_path(blog)
-        %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to blog.title, blog
+        %td= link_to blog.author.nickname, blog.author
 
 %br
 
