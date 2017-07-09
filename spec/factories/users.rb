@@ -15,5 +15,11 @@ FactoryGirl.define do
     sequence :nickname { |n| "Nickname#{n}" }
     icon_url nil
     introduction nil
+
+    trait :with_identity do
+      after(:create) do |user|
+        create(:identity, user: user)
+      end
+    end
   end
 end

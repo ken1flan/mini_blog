@@ -16,8 +16,8 @@
 
 FactoryGirl.define do
   factory :blog do
-    title "MyText"
-    body "MyText"
+    sequence :title { |n| "title#{n}" }
+    sequence :body { |n| "body#{n}" }
     author_id 1
   end
 end

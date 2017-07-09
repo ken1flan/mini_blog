@@ -18,7 +18,7 @@
 FactoryGirl.define do
   factory :identity do
     user_id nil
-    provider 'provider'
+    provider 'google_oauth2'
     sequence :uid { |n| "uid#{n}" }
   end
 end
