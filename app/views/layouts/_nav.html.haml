@@ -2,7 +2,7 @@
   -#
     %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
-  %a.navbar-brand{:href => "#"} Navbar
+  = link_to 'Mini Blog', root_path, class: 'navbar-brand'
   %ul.nav
     %li.nav-item
       - if user_signed_in?
