@@ -1,11 +1,17 @@
-%nav.navbar.navbar-toggleable-md.navbar-light.bg-faded{ style: 'background-color: #F5F5F5;'}
+%nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
   -#
-    %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+    %button.navbar-toggler.navbar-toggler-right{aria: {controls: 'navbarNav', expanded: false, label: 'Toggle navigation'}, data: {target: '#navbarNav', toggle: 'collapse'}, type: 'button'}
       %span.navbar-toggler-icon
   = link_to 'Mini Blog', root_path, class: 'navbar-brand'
   %ul.nav
-    %li.nav-item
-      - if user_signed_in?
-        = link_to 'Sign Out', signout_path
-      - else
+    - if user_signed_in?
+      %li.nav-item.dropdown
+        %span.nav-link.dropdown-toggle#navbarDropdownMenuLink{href: '#', data: {toggle: 'dropdown'}, aria: {haspopup: true, expanded: false}}
+          %img{src: current_user.icon_url}
+          = current_user.nickname
+        .dropdown-menu{aria: {labelledby: 'navbarDropdownMenuLink'}}
+          = link_to 'Profile', current_user, class: 'dropdown-item'
+          = link_to 'Sign Out', signout_path, class: 'dropdown-item'
+    - else
+      %li.nav-item
         = link_to 'Sign In', '/auth/google_oauth2'
