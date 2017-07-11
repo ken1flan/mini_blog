@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170711150724) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.index ["author_id"], name: "index_blogs_on_author_id"
   end
 
