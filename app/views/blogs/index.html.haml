@@ -9,7 +9,9 @@
   %tbody
     - @blogs.each do |blog|
       %tr
-        %td= link_to blog.title, blog
+        %td
+          = link_to blog.title, blog
+          = blog.status_badge
         %td= link_to blog.author.nickname, blog.author
 
 %br
