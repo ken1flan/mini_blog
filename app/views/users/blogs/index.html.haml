@@ -1,0 +1,7 @@
+%h1 #{@user.nickname}'s blogs
+
+= render 'blogs/list', blogs: @blogs
+
+%br
+
+= link_to 'New Blog', new_blog_path
