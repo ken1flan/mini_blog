@@ -10,8 +10,8 @@
           %img{src: current_user.icon_url}
           = current_user.nickname
         .dropdown-menu{aria: {labelledby: 'navbarDropdownMenuLink'}}
-          = link_to 'Profile', current_user, class: 'dropdown-item'
-          = link_to 'Blogs', user_blogs_path(current_user), class: 'dropdown-item'
+          = link_to 'Your Profile', current_user, class: 'dropdown-item'
+          = link_to 'Your Blogs', user_blogs_path(current_user), class: 'dropdown-item'
           = link_to 'Sign Out', signout_path, class: 'dropdown-item'
     - else
       %li.nav-item

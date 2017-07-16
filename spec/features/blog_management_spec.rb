@@ -5,6 +5,7 @@ RSpec.feature "Blog management", :type => :feature do
   let!(:user_blog){ create(:blog, author: user) }
   let(:other_user){ create(:user, :with_identity) }
   let!(:other_user_blog){ create(:blog, author: other_user) }
+  let!(:other_user_draft_blog){ create(:blog, :draft, author: other_user) }
 
   before do
     set_auth_mock(
@@ -16,7 +17,7 @@ RSpec.feature "Blog management", :type => :feature do
 
   after { unset_auth_mock(user.identities.first.provider) }
 
-  scenario "User creates a new blog" do
+  scenario "User creates a new draft blog, then user publishes it" do
     visit '/'
     click_link 'Sign In'
 
@@ -27,6 +28,20 @@ RSpec.feature "Blog management", :type => :feature do
 
     expect(page).to have_content('Blog Title')
     expect(page).to have_content('Blog Body')
+
+    click_link 'Mini Blog'
+    expect(page).not_to have_content('Blog Title')
+
+    click_link 'Your Blogs'
+    expect(page).to have_content('Blog Title')
+
+    click_link 'Blog Title'
+    click_link 'Edit'
+    select 'published', from: 'Status'
+    click_button 'Save'
+
+    click_link 'Mini Blog'
+    expect(page).to have_content('Blog Title')
   end
 
   scenario "User edits own blog" do
@@ -65,6 +80,9 @@ RSpec.feature "Blog management", :type => :feature do
   scenario "User visits other user's blog" do
     visit '/'
     click_link 'Sign In'
+
+    expect(page).to have_content(other_user_blog.title)
+    expect(page).not_to have_content(other_user_draft_blog.title)
 
     click_link other_user_blog.title
     expect(page).not_to have_link('Edit')
