@@ -246,6 +246,8 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
+    rspec_junit_formatter (0.3.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.49.1)
       parallel (~> 1.10)
       parser (>= 2.3.3.1, < 3.0)
@@ -337,6 +339,7 @@ DEPENDENCIES
   rails (~> 5.1.1)
   rails_best_practices
   rspec-rails
+  rspec_junit_formatter
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -348,4 +351,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.1
+   1.15.2

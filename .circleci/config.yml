@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4-node
+    steps:
+      - checkout
+
+      - type: cache-restore
+        key: mini_blog_{{ checksum "Gemfile.lock" }}
+
+      - run: bundle install --path vendor/bundle
+
+      - type: cache-save
+        key: mini_blog_{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+
+      - type: shell
+        command: |
+          bundle exec rspec \
+            --profile 10 \
+            --format RspecJunitFormatter \
+            --out /tmp/test-results/rspec.xml \
+            --format progress \
+            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      - type: store_test_results
+        path: /tmp/test-results
