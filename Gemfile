@@ -38,6 +38,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
   gem 'dotenv-rails'
+  gem 'foreman'
 end
 
 group :development do
