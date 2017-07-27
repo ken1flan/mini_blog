@@ -16,3 +16,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require d3/d3
+//= require cal-heatmap/cal-heatmap
