@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
+gem 'webpacker', '~> 2.0'
 
 gem 'jquery-rails'
 gem 'faml'
@@ -37,6 +38,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
   gem 'dotenv-rails'
+  gem 'foreman'
 end
 
 group :development do
