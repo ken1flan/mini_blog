@@ -8,6 +8,7 @@
 #  author_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  status     :integer
 #
 # Indexes
 #
@@ -16,6 +17,8 @@
 
 class Blog < ApplicationRecord
   belongs_to :author, class_name: 'User'
+
+  enum status: { draft: 0, published: 1 }
 
   def editable? (user)
     author == user
