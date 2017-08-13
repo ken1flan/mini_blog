@@ -1,0 +1,17 @@
+%h1 #{@user.nickname}'s blogs
+
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Author
+
+  %tbody
+    - @blogs.each do |blog|
+      %tr
+        %td= link_to blog.title, blog
+        %td= link_to blog.author.nickname, blog.author
+
+%br
+
+= link_to 'New Blog', new_blog_path
