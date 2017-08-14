@@ -8,6 +8,7 @@
 #  author_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  status     :integer          default(0), not null
 #
 # Indexes
 #
@@ -18,6 +19,11 @@ FactoryGirl.define do
   factory :blog do
     sequence :title { |n| "title#{n}" }
     sequence :body { |n| "body#{n}" }
+    status Blog.statuses[:published]
     author_id 1
+
+    trait :draft do
+      status Blog.statuses[:draft]
+    end
   end
 end
