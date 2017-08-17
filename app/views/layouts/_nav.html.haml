@@ -1,18 +1,35 @@
-%nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
-  -#
-    %button.navbar-toggler.navbar-toggler-right{aria: {controls: 'navbarNav', expanded: false, label: 'Toggle navigation'}, data: {target: '#navbarNav', toggle: 'collapse'}, type: 'button'}
-      %span.navbar-toggler-icon
-  = link_to 'Mini Blog', root_path, class: 'navbar-brand'
-  %ul.nav
-    - if user_signed_in?
-      %li.nav-item.dropdown
-        %span.nav-link.dropdown-toggle#navbarDropdownMenuLink{href: '#', data: {toggle: 'dropdown'}, aria: {haspopup: true, expanded: false}}
-          %img{src: current_user.icon_url}
-          = current_user.nickname
-        .dropdown-menu{aria: {labelledby: 'navbarDropdownMenuLink'}}
-          = link_to 'Profile', current_user, class: 'dropdown-item'
-          = link_to 'My Blogs', user_blogs_path(current_user), class: 'dropdown-item'
-          = link_to 'Sign Out', signout_path, class: 'dropdown-item'
-    - else
-      %li.nav-item
-        = link_to 'Sign In', '/auth/google_oauth2'
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Mini Blog', root_path, class: 'navbar-brand'
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li{ class: current_page?(blogs_path) ? 'active' : '' }
+          = link_to 'Blogs', blogs_path
+        %li{ class: current_page?(users_path) ? 'active' : '' }
+          = link_to 'Users', users_path
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              %img{src: current_user.icon_url}
+              = current_user.nickname
+              %span.caret
+            %ul.dropdown-menu
+              - if user_signed_in?
+                %li
+                  = link_to 'Profile', current_user, class: 'dropdown-item'
+                %li
+                  = link_to 'My Blogs', user_blogs_path(current_user), class: 'dropdown-item'
+                %li
+                  %a{:href => "#"} Separated link
+                %li
+                  = link_to 'Sign Out', signout_path, class: 'dropdown-item'
+        - else
+          %li
+            = link_to 'Sign In', '/auth/google_oauth2'
