@@ -15,6 +15,11 @@
           = link_to 'Users', users_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
+          %li
+            .nav--btn
+              = link_to new_blog_path, { class: "btn btn-primary" } do
+                %span.glyphicon.glyphicon-edit
+                New Blog
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               %img{src: current_user.icon_url}
