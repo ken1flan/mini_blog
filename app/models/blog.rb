@@ -18,6 +18,8 @@
 class Blog < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
+  validates :title, presence: true, length: { maximum: 64 }
+  validates :body, presence: true, length: { maximum: 10000 }
   enum status: { draft: 0, published: 1 }
 
   def editable? (user)
