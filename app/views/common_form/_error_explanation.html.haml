@@ -1,0 +1,9 @@
+- if errors.any?
+  .panel.panel-danger#error_explanation
+    .panel-heading
+      .panel-title
+        = "#{pluralize(errors.count, "error")} prohibited this blog from being saved:"
+    .panel-body
+      %ul
+        - errors.full_messages.each do |message|
+          %li= message
