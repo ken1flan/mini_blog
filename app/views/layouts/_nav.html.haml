@@ -31,8 +31,7 @@
                   = link_to 'Profile', current_user, class: 'dropdown-item'
                 %li
                   = link_to 'My Blogs', user_blogs_path(current_user), class: 'dropdown-item'
-                %li
-                  %a{:href => "#"} Separated link
+                %li.divider{ role: "separator" }
                 %li
                   = link_to 'Sign Out', signout_path, class: 'dropdown-item'
         - else
