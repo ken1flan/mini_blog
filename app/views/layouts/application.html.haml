@@ -12,5 +12,10 @@
     .container
       = render 'layouts/nav'
 
+    - if flash
+      .container
+        - flash.each do |key, message|
+          %div{class: "alert alert-#{alert_type(key)}"}
+            = message
     .container
       = yield
