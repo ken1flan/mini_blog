@@ -1,33 +1,71 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/mini_blog
     docker:
       - image: circleci/ruby:2.4-node
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: ubuntu
+          DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/mini_blog_test
+      - image: circleci/postgres:9.6.4-alpine
+        environment:
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: mini_blog_test
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
-
-      - type: cache-restore
-        key: mini_blog_{{ checksum "Gemfile.lock" }}
-
-      - run: bundle install --path vendor/bundle
-      - run: bin/yarn install
-
-      - type: cache-save
-        key: mini_blog_{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
-
-      - run: bundle exec rails db:create
-      - run: bundle exec rails db:schema:load
-
-      - type: shell
-        command: |
-          bundle exec rspec \
-            --profile 10 \
-            --format RspecJunitFormatter \
-            --out /tmp/test-results/rspec.xml \
-            --format progress \
-            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
-      - type: store_test_results
-        path: /tmp/test-results
+      - restore_cache:
+          name: Restore bundle cache
+          key: mini_blog-bundle-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          name: Restore yarn cache
+          key: mini_blog-yarn-{{ checksum "yarn.lock" }}
+      - run:
+          name: Bundle Install
+          command: bin/bundle check  --path vendor/bundle ||  bin/bundle install --path vendor/bundle --jobs 4 --retry 3
+      - run:
+          name: Yarn Install
+          command: bin/yarn install
+      - save_cache:
+          name: Store bundle cache
+          key: mini_blog-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - save_cache:
+          name: Store yarn cache
+          key: mini_blog-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.yarn-cache
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Process List
+          command: ps aux
+      - run:
+          name: Netstat
+          command: netstat -antu
+      - run:
+          name: List tmp
+          command: ls -al /tmp
+      - run:
+          name: List var/run
+          command: ls -al /var/run/
+      - run:
+          name: DatabaseURL
+          command: echo $DATABASE_URL
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+      - run:
+          name: RSpec
+          command: |
+            bundle exec rspec \
+              --profile 10 \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - store_test_results:
+          path: /tmp/test-results
