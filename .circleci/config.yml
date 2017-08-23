@@ -41,21 +41,6 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: Process List
-          command: ps aux
-      - run:
-          name: Netstat
-          command: netstat -antu
-      - run:
-          name: List tmp
-          command: ls -al /tmp
-      - run:
-          name: List var/run
-          command: ls -al /var/run/
-      - run:
-          name: DatabaseURL
-          command: echo $DATABASE_URL
-      - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
       - run:
