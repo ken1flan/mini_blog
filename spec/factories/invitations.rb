@@ -18,17 +18,21 @@
 
 FactoryGirl.define do
   factory :invitation do
-    email "MyString"
-    message "MyText"
+    email "foo@bar.com"
+    message "Welcome!"
     introducer_id 1
-    token "MyString"
-    expired_at "2017-08-24 08:20:04"
+    token nil
+    expired_at nil
 
     trait :with_introducer do
       after(:build) do |invitation|
         introducer = create(:user)
         invitation.introducer = introducer
       end
+    end
+
+    trait :expired do
+      expired_at 1.day.ago
     end
   end
 end

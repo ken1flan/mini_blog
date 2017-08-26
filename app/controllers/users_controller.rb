@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    invitation = Invitation.within_time_limit.find_by(token: params[:token])
+    unless invitation
+      not_found
+    end
+
     @user = User.new
   end
 

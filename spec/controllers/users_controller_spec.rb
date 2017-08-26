@@ -70,8 +70,9 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #new" do
+    let(:invitation){ create(:invitation, :with_introducer) }
     it "returns a success response" do
-      get :new, params: {}, session: valid_session
+      get :new, params: {token: invitation.token}, session: valid_session
       expect(response).to be_success
     end
   end
