@@ -13,6 +13,7 @@
 class User < ApplicationRecord
   has_many :identities
   has_many :blogs, foreign_key: :author_id
+  has_many :invitations, foreign_key: :introducer_id
 
   validates :nickname, presence: true, length: {maximum: 64}
   validates :icon_url, length: {maximum: 255}
