@@ -69,41 +69,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    let(:invitation){ create(:invitation, :with_introducer) }
-    it "returns a success response" do
-      get :new, params: {token: invitation.token}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
   describe "GET #edit" do
     it "returns a success response" do
       user = User.create! valid_attributes
       get :edit, params: {id: user.to_param}, session: valid_session
       expect(response).to be_success
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new User" do
-        expect {
-          post :create, params: {user: valid_attributes}, session: valid_session
-        }.to change(User, :count).by(1)
-      end
-
-      it "redirects to the created user" do
-        post :create, params: {user: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(User.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {user: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
     end
   end
 
