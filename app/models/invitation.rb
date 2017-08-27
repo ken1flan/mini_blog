@@ -19,6 +19,8 @@
 class Invitation < ApplicationRecord
   belongs_to :introducer, class_name: 'User'
   before_create :set_token_and_expired_at
+  
+  scope :within_time_limit, -> { where('invitations.expired_at >= ?', Time.zone.now) }
 
   EXPIRATION_PERIOD = 3.days
 
@@ -29,8 +31,8 @@ class Invitation < ApplicationRecord
   private
   def set_token_and_expired_at
     begin
-      self.token = SecureRandom.urlsafe_base64
+      self.token ||= SecureRandom.urlsafe_base64
     end while Invitation.exists?(token: token)
-    self.expired_at = EXPIRATION_PERIOD.since
+    self.expired_at ||= EXPIRATION_PERIOD.since
   end
 end
