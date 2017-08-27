@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature 'Session management', :type => :feature do
-  context 'When user signed up' do
+  context 'When user does not signed up' do
     let(:provider){ :google_oauth2 }
     let(:nickname){ 'Nickname' }
     let(:icon_url){ nil }
@@ -15,7 +15,7 @@ RSpec.feature 'Session management', :type => :feature do
     scenario 'User signs up' do
       visit '/'
       click_link 'Sign In'
-      expect(page).to have_content('Sign Out')
+      expect(page).to have_content('You need to sign up')
     end
   end
 

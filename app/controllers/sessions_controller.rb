@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
   def create
     @user = User.find_from(auth_hash)
-    @user ||= User.create_with_identity(auth_hash)
+    unless @user
+      redirect_to root_path, alert: 'You need to sign up.'
+      return
+    end
+
     session[:user_id] = @user.id
     redirect_to root_path, notice: 'Signed in'
   end
