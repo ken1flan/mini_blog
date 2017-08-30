@@ -32,6 +32,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
   gem 'factory_girl_rails'
+  gem 'chromedriver-helper'
   gem 'rubocop', require: false
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
