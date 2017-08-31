@@ -47,3 +47,5 @@ group :development do
   gem 'bullet', require: false
   gem 'annotate'
 end
+
+ruby "2.4.1"
