@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823232004) do
+ActiveRecord::Schema.define(version: 20170903222053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blog_tags", force: :cascade do |t|
+    t.bigint "blog_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_blog_tags_on_blog_id"
+    t.index ["tag_id"], name: "index_blog_tags_on_tag_id"
+  end
 
   create_table "blogs", force: :cascade do |t|
     t.string "title", null: false
@@ -46,6 +55,12 @@ ActiveRecord::Schema.define(version: 20170823232004) do
     t.index ["introducer_id"], name: "index_invitations_on_introducer_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "nickname", limit: 64, null: false
     t.string "icon_url"
@@ -54,4 +69,6 @@ ActiveRecord::Schema.define(version: 20170823232004) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "blog_tags", "blogs"
+  add_foreign_key "blog_tags", "tags"
 end

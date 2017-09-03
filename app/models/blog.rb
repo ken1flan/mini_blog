@@ -17,6 +17,8 @@
 
 class Blog < ApplicationRecord
   belongs_to :author, class_name: 'User'
+  has_many :blog_tags
+  has_many :tags, through: :blog_tags
 
   validates :title, presence: true, length: { maximum: 64 }
   validates :body, presence: true, length: { maximum: 10000 }
