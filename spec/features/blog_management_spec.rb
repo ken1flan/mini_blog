@@ -25,10 +25,14 @@ RSpec.feature "Blog management", :type => :feature do
     click_link 'New Blog'
     fill_in 'form_blog_contribution[title]', with: 'Blog Title'
     fill_in 'form_blog_contribution[body]', with: 'Blog Body'
+    fill_in 'form_blog_contribution[tags_string]', with: ' Tag1,Tag2, Tag3'
     click_button 'Save'
 
     expect(page).to have_content('Blog Title')
     expect(page).to have_content('Blog Body')
+    expect(page).to have_content('Tag1')
+    expect(page).to have_content('Tag2')
+    expect(page).to have_content('Tag3')
   end
 
   scenario "Unlogined user view blog list" do
@@ -70,10 +74,14 @@ RSpec.feature "Blog management", :type => :feature do
 
     fill_in 'form_blog_contribution[title]', with: 'Blog New Title'
     fill_in 'form_blog_contribution[body]', with: 'Blog New Body'
+    fill_in 'form_blog_contribution[tags_string]', with: ' NewTag1,NewTag2, NewTag3'
     click_button 'Save'
 
     expect(page).to have_content('Blog New Title')
     expect(page).to have_content('Blog New Body')
+    expect(page).to have_content('NewTag1')
+    expect(page).to have_content('NewTag2')
+    expect(page).to have_content('NewTag3')
   end
 
   scenario "User destroys own blog" do

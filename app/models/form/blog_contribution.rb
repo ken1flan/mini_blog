@@ -10,10 +10,22 @@ class Form::BlogContribution
 
   def save
     return false unless valid?
+    # FIXME: updating probrem
     self.blog = Blog.create(author: author, title: title, body: body, status: status)
+    self.blog.tags = []
+    self.blog.tags = tags
   end
 
   def self.build_from(original)
-    new(title: original.title, body: original.body, status: original.status)
+    tags_string = original.tags.map(&:name).join(',')
+    new(title: original.title, body: original.body, tags_string: tags_string, status: original.status)
+  end
+
+  private
+  def tags
+    self.tags_string.split(',').map(&:strip).select(&:present?).uniq.map do |name|
+      tag = Tag.find_by(name: name)
+      tag ||= Tag.create(name: name)
+    end
   end
 end

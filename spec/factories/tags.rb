@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :tag do
-    name "MyString"
+    sequence (:name) { |n| "MyString#{n}" }
   end
 end

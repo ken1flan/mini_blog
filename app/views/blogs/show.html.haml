@@ -1,15 +1,20 @@
-%h1
-  = @blog.title
+.panel.panel-default
+  .panel-body
+    %h1
+      = @blog.title
+  
+    = markdown_to_html @blog.body
+  
+    %p
+      = @blog.status
+  
+    %p
+      - @blog.tags.each do |tag|
+        %span.btn.btn-sm.btn-default= tag.name
 
-%p
-  = markdown_to_html @blog.body
-
-%p
-  = @blog.status
-
-%p
-  Written by
-  = link_to @blog.author.nickname, user_path(@blog.author)
+    %p
+      Written by
+      = link_to @blog.author.nickname, user_path(@blog.author)
 
 - if @blog.editable?(current_user)
   = link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary'
