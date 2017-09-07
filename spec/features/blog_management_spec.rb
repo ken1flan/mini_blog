@@ -23,8 +23,8 @@ RSpec.feature "Blog management", :type => :feature do
     click_link 'Sign In'
 
     click_link 'New Blog'
-    fill_in 'Title', with: 'Blog Title'
-    fill_in 'Body', with: 'Blog Body'
+    fill_in 'form_blog_contribution[title]', with: 'Blog Title'
+    fill_in 'form_blog_contribution[body]', with: 'Blog Body'
     click_button 'Save'
 
     expect(page).to have_content('Blog Title')
@@ -68,8 +68,8 @@ RSpec.feature "Blog management", :type => :feature do
 
     click_link 'Edit'
 
-    fill_in 'Title', with: 'Blog New Title'
-    fill_in 'Body', with: 'Blog New Body'
+    fill_in 'form_blog_contribution[title]', with: 'Blog New Title'
+    fill_in 'form_blog_contribution[body]', with: 'Blog New Body'
     click_button 'Save'
 
     expect(page).to have_content('Blog New Title')

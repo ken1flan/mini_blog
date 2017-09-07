@@ -15,40 +15,35 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
-    @blog = Blog.new
+    @blog_contribution = Form::BlogContribution.new
   end
 
   # GET /blogs/1/edit
   def edit
+    @blog_contribution = Form::BlogContribution.build_from(@blog)
   end
 
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = current_user.blogs.new(blog_params)
+    @blog_contribution = Form::BlogContribution.new(blog_params)
 
-    respond_to do |format|
-      if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
-        format.json { render :show, status: :created, location: @blog }
-      else
-        format.html { render :new }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    if @blog_contribution.save
+      redirect_to @blog_contribution.blog, notice: 'Blog was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
-    respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
-        format.json { render :show, status: :ok, location: @blog }
-      else
-        format.html { render :edit }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    @blog_contribution = Form::BlogContribution.new(blog_params)
+
+    if @blog_contribution.save
+      redirect_to @blog, notice: 'Blog was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -63,17 +58,18 @@ class BlogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
-      params.require(:blog).permit(:title, :body, :status)
-    end
+  def blog_params
+    params.
+      require(:form_blog_contribution).
+      permit(:title, :body, :tags_string, :status).
+      merge(author: current_user)
+  end
 
-    def editable?
-      not_found unless @blog.editable?(current_user)
-    end
+  def editable?
+    not_found unless @blog.editable?(current_user)
+  end
 end
