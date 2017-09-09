@@ -1,5 +1,5 @@
-= form_for @blog do |f|
-  = render 'common_form/error_explanation', errors: @blog.errors
+= form_with model: blog_contribution, url: blogs_path do |f|
+  = render 'common_form/error_explanation', errors: blog_contribution.errors
 
   .field.form-group.row
     = f.label :title, class: 'col-2 col-form-label'
@@ -9,6 +9,10 @@
     = f.label :body, class: 'col-2 col-form-label'
     .col-10
       = f.text_area :body, rows: 5, class: 'form-control'
+  .field.form-group.row
+    = f.label :tags_string, class: 'col-2 col-form-label'
+    .col-10
+      = f.text_field :tags_string, type: 'text', class: 'form-control'
   .field.form-group.row
     = f.label :status, class: 'col-2 col-form-label'
     .col-10
