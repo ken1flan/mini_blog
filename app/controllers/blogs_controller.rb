@@ -29,7 +29,7 @@ class BlogsController < ApplicationController
     @blog_contribution = Form::BlogContribution.new(blog_params)
 
     if @blog_contribution.save
-      redirect_to @blog_contribution.blog, notice: 'Blog was successfully created.'
+      redirect_to blog_path(id: @blog_contribution.blog.id), notice: 'Blog was successfully created.'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class BlogsController < ApplicationController
     @blog_contribution = Form::BlogContribution.new(blog_params)
 
     if @blog_contribution.save
-      redirect_to @blog, notice: 'Blog was successfully updated.'
+      redirect_to blog_path(id: @blog_contribution.blog.id), notice: 'Blog was successfully updated.'
     else
       render :edit
     end

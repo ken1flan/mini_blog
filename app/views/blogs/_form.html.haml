@@ -1,5 +1,5 @@
-= form_with model:@blog_contribution, url: blogs_path do |f|
-  = render 'common_form/error_explanation', errors: @blog_contribution.errors
+= form_with model: blog_contribution, url: blogs_path do |f|
+  = render 'common_form/error_explanation', errors: blog_contribution.errors
 
   .field.form-group.row
     = f.label :title, class: 'col-2 col-form-label'

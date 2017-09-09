@@ -2,12 +2,12 @@
   .panel-body
     %h1
       = @blog.title
-  
+
     = markdown_to_html @blog.body
-  
+
     %p
       = @blog.status
-  
+
     %p
       - @blog.tags.each do |tag|
         %span.btn.btn-sm.btn-default= tag.name
