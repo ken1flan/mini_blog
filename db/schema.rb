@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170903222053) do
     t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["blog_id", "tag_id"], name: "index_blog_tags_on_blog_id_and_tag_id", unique: true
     t.index ["blog_id"], name: "index_blog_tags_on_blog_id"
     t.index ["tag_id"], name: "index_blog_tags_on_tag_id"
   end
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170903222053) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

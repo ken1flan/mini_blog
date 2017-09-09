@@ -6,5 +6,7 @@ class CreateBlogTags < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_index :blog_tags, [:blog_id, :tag_id], unique: true
   end
 end

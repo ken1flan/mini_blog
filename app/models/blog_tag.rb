@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_blog_tags_on_blog_id  (blog_id)
-#  index_blog_tags_on_tag_id   (tag_id)
+#  index_blog_tags_on_blog_id             (blog_id)
+#  index_blog_tags_on_blog_id_and_tag_id  (blog_id,tag_id) UNIQUE
+#  index_blog_tags_on_tag_id              (tag_id)
 #
 
 class BlogTag < ApplicationRecord
