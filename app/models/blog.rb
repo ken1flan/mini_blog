@@ -24,6 +24,8 @@ class Blog < ApplicationRecord
   validates :body, presence: true, length: { maximum: 10000 }
   enum status: { draft: 0, published: 1 }
 
+  scope :normal_order, -> { order('blogs.created_at DESC') }
+
   def editable? (user)
     author == user
   end
