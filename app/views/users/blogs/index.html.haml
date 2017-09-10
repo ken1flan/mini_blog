@@ -3,15 +3,14 @@
 %table.table
   %thead
     %tr
+      %th Date
       %th Title
       %th Author
 
   %tbody
     - @blogs.each do |blog|
       %tr
+        %td= blog.created_at.to_date
         %td= link_to blog.title, blog
         %td= link_to blog.author.nickname, blog.author
 
-%br
-
-= link_to 'New Blog', new_blog_path
