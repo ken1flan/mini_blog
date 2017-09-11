@@ -25,5 +25,21 @@ FactoryGirl.define do
     trait :draft do
       status Blog.statuses[:draft]
     end
+
+    trait :with_author do
+      before(:create) do |blog|
+        blog.author = create(:user)
+      end
+    end
+
+    trait :tagged do
+      transient do
+        tags []
+      end
+
+      after(:create) do |blog, evaluator|
+        blog.tags = evaluator.tags
+      end
+    end
   end
 end
