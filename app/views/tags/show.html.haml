@@ -1,3 +1,5 @@
-%h1 '#{@tag.name}' tagged blogs
+.row
+  %h1 '#{@tag.name}' tagged blogs
 
-= render 'blogs/list', blogs: @blogs
+.row
+  = render 'blogs/list', blogs: @blogs

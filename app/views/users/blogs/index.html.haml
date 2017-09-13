@@ -1,16 +1,17 @@
-%h1 #{@user.nickname}'s blogs
+.row
+  %h1 #{@user.nickname}'s blogs
 
-%table.table
-  %thead
-    %tr
-      %th Date
-      %th Title
-      %th Author
-
-  %tbody
-    - @blogs.each do |blog|
+.row
+  %table.table
+    %thead
       %tr
-        %td= blog.created_at.to_date
-        %td= link_to blog.title, blog
-        %td= link_to blog.author.nickname, blog.author
+        %th Date
+        %th Title
+        %th Author
 
+    %tbody
+      - @blogs.each do |blog|
+        %tr
+          %td= blog.created_at.to_date
+          %td= link_to blog.title, blog
+          %td= link_to blog.author.nickname, blog.author

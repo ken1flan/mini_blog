@@ -1,10 +1,11 @@
-%h1.card-title
-  %img.img-thumbnail{src: @user.icon_url}
-  = @user.nickname
+.row
+  %h1.card-title
+    %img.img-thumbnail{ src: @user.icon_url }
+    = @user.nickname
 
-.card
-  .card-block
-    = simple_format @user.introduction
+  .card
+    .card-block
+      = simple_format @user.introduction
 
 = link_to 'Edit', edit_user_path(@user)
 \|
