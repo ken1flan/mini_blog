@@ -3,3 +3,6 @@
 
 .row
   = render 'list', blogs: @blogs
+
+.row
+  = paginate @blogs

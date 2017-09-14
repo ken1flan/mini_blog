@@ -2,7 +2,7 @@ class Users::BlogsController < ApplicationController
   before_action :set_user
 
   def index
-    @blogs = @user.blogs.normal_order
+    @blogs = @user.blogs.normal_order.page(params[:page])
   end
 
   private
