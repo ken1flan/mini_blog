@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Form::BlogContribution
   include ActiveModel::Model
 

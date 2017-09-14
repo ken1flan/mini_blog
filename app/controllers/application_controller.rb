@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :user_signed_in?, :current_user, :markdown_to_html
 
   def not_found
-    raise ActionController::RoutingError.new('Not Found')
+    raise ActionController::RoutingError, 'Not Found'
   end
 
   def user_signed_in?

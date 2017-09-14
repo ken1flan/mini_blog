@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def create
     if session[:invitation_id]
@@ -21,6 +23,7 @@ class SessionsController < ApplicationController
   end
 
   protected
+
   def auth_hash
     request.env['omniauth.auth']
   end
@@ -28,9 +31,7 @@ class SessionsController < ApplicationController
   def create_with_user_and_identity
     invitation = Invitation.within_time_limit.find(session[:invitation_id])
     @user ||= User.create_with_identity(auth_hash)
-    unless invitation
-      not_found
-    end
+    not_found unless invitation
 
     session[:user_id] = @user.id
     session.delete :invitation_id

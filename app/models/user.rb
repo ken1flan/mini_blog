@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -15,9 +17,9 @@ class User < ApplicationRecord
   has_many :blogs, foreign_key: :author_id
   has_many :invitations, foreign_key: :introducer_id
 
-  validates :nickname, presence: true, length: {maximum: 64}
-  validates :icon_url, length: {maximum: 255}
-  validates :introduction, length: {maximum: 255}
+  validates :nickname, presence: true, length: { maximum: 64 }
+  validates :icon_url, length: { maximum: 255 }
+  validates :introduction, length: { maximum: 255 }
 
   def self.create_with_identity(auth)
     nickname = auth[:info][:nickname]
@@ -30,8 +32,8 @@ class User < ApplicationRecord
   end
 
   def self.find_from(auth)
-    User.joins(:identities).
-      merge(Identity.where(provider: auth[:provider], uid: auth[:uid])).
-      first
+    User.joins(:identities)
+        .merge(Identity.where(provider: auth[:provider], uid: auth[:uid]))
+        .first
   end
 end

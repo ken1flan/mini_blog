@@ -1,12 +1,14 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.feature "Blog management", :type => :feature do
-  let(:user){ create(:user, :with_identity) }
-  let!(:user_blog){ create(:blog, author: user) }
-  let!(:user_draft_blog){ create(:blog, :draft, author: user) }
-  let(:other_user){ create(:user, :with_identity) }
-  let!(:other_user_blog){ create(:blog, author: other_user) }
-  let!(:other_user_draft_blog){ create(:blog, :draft, author: other_user) }
+require 'rails_helper'
+
+RSpec.feature 'Blog management', type: :feature do
+  let(:user) { create(:user, :with_identity) }
+  let!(:user_blog) { create(:blog, author: user) }
+  let!(:user_draft_blog) { create(:blog, :draft, author: user) }
+  let(:other_user) { create(:user, :with_identity) }
+  let!(:other_user_blog) { create(:blog, author: other_user) }
+  let!(:other_user_draft_blog) { create(:blog, :draft, author: other_user) }
 
   before do
     set_auth_mock(
@@ -18,7 +20,7 @@ RSpec.feature "Blog management", :type => :feature do
 
   after { unset_auth_mock(user.identities.first.provider) }
 
-  scenario "User creates a new blog" do
+  scenario 'User creates a new blog' do
     visit '/'
     click_link 'Sign In'
 
@@ -35,7 +37,7 @@ RSpec.feature "Blog management", :type => :feature do
     expect(page).to have_content('Tag3')
   end
 
-  scenario "Unlogined user view blog list" do
+  scenario 'Unlogined user view blog list' do
     visit '/'
 
     expect(page).to have_content(user_blog.title)
@@ -44,7 +46,7 @@ RSpec.feature "Blog management", :type => :feature do
     expect(page).not_to have_content(other_user_draft_blog.title)
   end
 
-  scenario "Logined user view blog list" do
+  scenario 'Logined user view blog list' do
     visit '/'
     click_link 'Sign In'
 
@@ -60,7 +62,7 @@ RSpec.feature "Blog management", :type => :feature do
     expect(page).not_to have_content(other_user_draft_blog.title)
   end
 
-  scenario "User edits own blog" do
+  scenario 'User edits own blog' do
     visit '/'
     click_link 'Sign In'
 
@@ -84,7 +86,7 @@ RSpec.feature "Blog management", :type => :feature do
     expect(page).to have_content('NewTag3')
   end
 
-  scenario "User destroys own blog" do
+  scenario 'User destroys own blog' do
     visit '/'
     click_link 'Sign In'
 

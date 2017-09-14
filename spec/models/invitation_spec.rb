@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invitations
@@ -20,10 +22,10 @@ require 'rails_helper'
 
 RSpec.describe Invitation, type: :model do
   describe '#create' do
-    let(:invitation){ build(:invitation, :with_introducer, token: nil, expired_at: nil) }
+    let(:invitation) { build(:invitation, :with_introducer, token: nil, expired_at: nil) }
 
     context 'After save' do
-      let(:now){ Time.zone.local('2017/8/12 8:35:17') }
+      let(:now) { Time.zone.local('2017/8/12 8:35:17') }
       before do
         travel_to now
         invitation.save

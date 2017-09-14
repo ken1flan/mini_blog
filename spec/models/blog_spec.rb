@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: blogs
@@ -21,18 +23,18 @@ RSpec.describe Blog, type: :model do
   describe '#editable?' do
     subject { blog.editable?(user) }
 
-    let(:author){ create(:user) }
-    let(:no_author){ create(:user) }
-    let(:blog){ create(:blog, author: author)}
+    let(:author) { create(:user) }
+    let(:no_author) { create(:user) }
+    let(:blog) { create(:blog, author: author) }
 
     context 'When user is blog owner' do
-      let(:user){ author }
+      let(:user) { author }
 
       it { is_expected.to be_truthy }
     end
 
     context 'When user is not blog owner' do
-      let(:user){ no_author }
+      let(:user) { no_author }
 
       it { is_expected.to be_falsy }
     end

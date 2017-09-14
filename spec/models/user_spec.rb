@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -14,10 +16,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe '.create_with_identity' do
-    subject(:user){ User.create_with_identity(auth) }
+    subject(:user) { User.create_with_identity(auth) }
 
     context 'When auth is valid' do
-      let(:auth){ {info: {nickname: 'somebody'}, provider: 'twitter', uid: '12345678'} }
+      let(:auth) { { info: { nickname: 'somebody' }, provider: 'twitter', uid: '12345678' } }
 
       it 'expects user create with identity' do
         created_user = User.find(user.id)
@@ -29,7 +31,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'When auth is nil' do
-      let(:auth){ nil }
+      let(:auth) { nil }
 
       it 'is expected to raise error' do
         expect { subject }.to raise_error NoMethodError
@@ -37,7 +39,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'When invalid auth' do
-      let(:auth){ {invalid: 'test' } }
+      let(:auth) { { invalid: 'test' } }
 
       it 'is expected to raise error' do
         expect { subject }.to raise_error NoMethodError
@@ -46,11 +48,10 @@ RSpec.describe User, type: :model do
   end
 
   describe '.find_from' do
-    subject(:user){ User.find_from(auth) }
-    let(:auth){ {info: {nickname: 'somebody'}, provider: 'twitter', uid: '12345678'} }
+    subject(:user) { User.find_from(auth) }
+    let(:auth) { { info: { nickname: 'somebody' }, provider: 'twitter', uid: '12345678' } }
 
     context 'When user does not exist' do
-
       it { is_expected.to be_nil }
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::BlogsController < ApplicationController
   before_action :set_user
 
@@ -6,6 +8,7 @@ class Users::BlogsController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:user_id])
   end
