@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :editable?, only: [:edit, :update, :destroy]
+  before_action :set_blog, only: %i[show edit update destroy]
+  before_action :editable?, only: %i[edit update destroy]
 
   # GET /blogs
   # GET /blogs.json
@@ -10,8 +12,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   # GET /blogs/1.json
-  def show
-  end
+  def show; end
 
   # GET /blogs/new
   def new
@@ -58,15 +59,16 @@ class BlogsController < ApplicationController
   end
 
   private
+
   def set_blog
     @blog = Blog.find(params[:id])
   end
 
   def blog_params
-    params.
-      require(:form_blog_contribution).
-      permit(:title, :body, :tags_string, :status).
-      merge(author: current_user)
+    params
+      .require(:form_blog_contribution)
+      .permit(:title, :body, :tags_string, :status)
+      .merge(author: current_user)
   end
 
   def editable?

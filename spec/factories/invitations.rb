@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invitations
@@ -18,8 +20,8 @@
 
 FactoryGirl.define do
   factory :invitation do
-    email "foo@bar.com"
-    message "Welcome!"
+    email 'foo@bar.com'
+    message 'Welcome!'
     introducer_id 1
     token nil
     expired_at nil

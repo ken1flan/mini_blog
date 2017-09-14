@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: blogs
@@ -21,12 +23,12 @@ class Blog < ApplicationRecord
   has_many :tags, through: :blog_tags
 
   validates :title, presence: true, length: { maximum: 64 }
-  validates :body, presence: true, length: { maximum: 10000 }
+  validates :body, presence: true, length: { maximum: 10_000 }
   enum status: { draft: 0, published: 1 }
 
   scope :normal_order, -> { order('blogs.created_at DESC') }
 
-  def editable? (user)
+  def editable?(user)
     author == user
   end
 end

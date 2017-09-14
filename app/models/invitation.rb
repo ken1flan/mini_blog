@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invitations
@@ -19,7 +21,7 @@
 class Invitation < ApplicationRecord
   belongs_to :introducer, class_name: 'User'
   before_create :set_token_and_expired_at
-  
+
   scope :within_time_limit, -> { where('invitations.expired_at >= ?', Time.zone.now) }
 
   EXPIRATION_PERIOD = 3.days
@@ -29,6 +31,7 @@ class Invitation < ApplicationRecord
   validates :introducer_id, presence: true
 
   private
+
   def set_token_and_expired_at
     begin
       self.token ||= SecureRandom.urlsafe_base64

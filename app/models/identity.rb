@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: identities
@@ -18,7 +20,6 @@
 class Identity < ApplicationRecord
   belongs_to :user
 
-  validates :provider, presence: true, length: {maximum: 64}
-  validates :uid, presence: true, length: {maximum: 64}
-
+  validates :provider, presence: true, length: { maximum: 64 }
+  validates :uid, presence: true, length: { maximum: 64 }
 end

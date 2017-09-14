@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature "UserRegistrations", type: :feature do
+RSpec.feature 'UserRegistrations', type: :feature do
   context 'With valid invitation' do
-    let!(:invitation){ create(:invitation, :with_introducer) }
+    let!(:invitation) { create(:invitation, :with_introducer) }
 
     scenario 'User visits signup page' do
       visit sign_up_path(token: invitation.token)
@@ -18,7 +20,7 @@ RSpec.feature "UserRegistrations", type: :feature do
   end
 
   context 'With a expired invitation' do
-    let!(:invitation){ create(:invitation, :with_introducer, :expired) }
+    let!(:invitation) { create(:invitation, :with_introducer, :expired) }
 
     scenario 'User visits signup page' do
       expect { visit sign_up_path(token: invitation.token) }.to raise_error('Not Found')
