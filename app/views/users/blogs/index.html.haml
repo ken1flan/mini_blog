@@ -15,3 +15,6 @@
           %td= blog.created_at.to_date
           %td= link_to blog.title, blog
           %td= link_to blog.author.nickname, blog.author
+
+.row
+  = paginate @blogs
