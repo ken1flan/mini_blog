@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Blog management', type: :feature do
+  let(:tags) { create_list(:tag, 3) }
   let(:user) { create(:user, :with_identity) }
-  let!(:user_blog) { create(:blog, author: user) }
+  let!(:user_blog) { create(:blog, :tagged, author: user, tags: tags) }
   let!(:user_draft_blog) { create(:blog, :draft, author: user) }
   let(:other_user) { create(:user, :with_identity) }
   let!(:other_user_blog) { create(:blog, author: other_user) }
