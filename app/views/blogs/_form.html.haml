@@ -1,4 +1,5 @@
-= form_with model: blog_contribution, url: blogs_path do |f|
+- method = blog_contribution.blog.new_record? ? :post : :patch
+= form_with model: blog_contribution, url: blog_contribution.blog, method: method do |f|
   = render 'common_form/error_explanation', errors: blog_contribution.errors
 
   .field.form-group.row

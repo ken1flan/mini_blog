@@ -12,8 +12,8 @@ class Form::BlogContribution
 
   def save
     return false unless valid?
-    # FIXME: updating probrem
-    @blog = Blog.create(author: author, title: title, body: body, status: status)
+    blog.attributes = { author: author, title: title, body: body, status: status }
+    blog.save
     blog.tags = []
     blog.tags = tags
   end
@@ -24,7 +24,9 @@ class Form::BlogContribution
       title: original.title,
       body: original.body,
       tags_string: tags_string,
-      status: original.status
+      status: original.status,
+      blog: original,
+      author: original.author
     )
   end
 

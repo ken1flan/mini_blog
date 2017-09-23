@@ -17,6 +17,7 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   def new
     @blog_contribution = Form::BlogContribution.new
+    @blog_contribution.blog = Blog.new
   end
 
   # GET /blogs/1/edit
@@ -28,6 +29,7 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog_contribution = Form::BlogContribution.new(blog_params)
+    @blog_contribution.blog = Blog.new
 
     if @blog_contribution.save
       redirect_to blog_path(id: @blog_contribution.blog.id), notice: 'Blog was successfully created.'
@@ -68,7 +70,7 @@ class BlogsController < ApplicationController
     params
       .require(:form_blog_contribution)
       .permit(:title, :body, :tags_string, :status)
-      .merge(author: current_user)
+      .merge(author: current_user, blog: @blog)
   end
 
   def editable?
