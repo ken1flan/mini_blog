@@ -19,8 +19,12 @@
 
 FactoryGirl.define do
   factory :blog do
-    sequence :title { |n| "title#{n}" }
-    sequence :body { |n| "body#{n}" }
+    sequence :title do |n|
+      "title#{n}"
+    end
+    sequence :body do |n|
+      "body#{n}"
+    end
     status Blog.statuses[:published]
     author_id 1
 
