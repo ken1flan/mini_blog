@@ -14,7 +14,9 @@
 
 FactoryGirl.define do
   factory :user do
-    sequence :nickname { |n| "Nickname#{n}" }
+    sequence :nickname do |n|
+      "Nickname#{n}"
+    end
     icon_url nil
     introduction nil
 
