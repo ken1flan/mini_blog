@@ -23,6 +23,7 @@ gem 'webpacker', '~> 2.0'
 gem 'faml'
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
+gem 'rails-i18n', '~> 5.0.0'
 gem 'redcarpet'
 
 group :development, :test do
