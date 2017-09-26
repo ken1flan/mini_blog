@@ -1,6 +1,7 @@
 - method = blog_contribution.blog.new_record? ? :post : :patch
-= form_with model: blog_contribution, url: blog_contribution.blog, method: method do |f|
-  = render 'common_form/error_explanation', errors: blog_contribution.errors
+= form_for blog_contribution, url: blog_contribution.blog, method: method do |f|
+  .row
+    = render 'common_form/error_explanation', errors: blog_contribution.errors
 
   .field.form-group.row
     = f.label :title, class: 'col-2 col-form-label'
