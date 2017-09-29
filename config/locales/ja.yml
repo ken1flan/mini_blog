@@ -1,0 +1,70 @@
+ja:
+  activerecord:: &activerecord
+    models:
+      form/blog_contribution: ブログ投稿
+      blog_tag: ブログとタグの関連
+      blog: ブログ
+      identity: 認証情報
+      invitation: 招待
+      tag: タグ
+      user: ユーザ
+    attributes:
+      form/blog_contribution:
+        title: タイトル
+        body: 本文
+        tags_string: タグ
+        status: 状態
+        statuses:
+          draft: 下書き
+          published: 公開中        
+        author: 著者
+        blog: ブログ
+      blog_tag:
+        id: ID
+        blog_id: ブログ
+        blog: ブログ
+        tag_id: タグ
+        tag: タグ
+        created_at: 作成日時
+        updated_at: 更新日時
+      blog:
+        id: ID
+        title: タイトル
+        body: 本文
+        author_id: 著者
+        author: 著者
+        status: 状態
+        statuses:
+          draft: 下書き
+          published: 公開中
+        created_at: 作成日時
+        updated_at: 更新日時
+      identity:
+        id: ID
+        provider: プロバイダ
+        uid: UID
+        created_at: 作成日時
+        updated_at: 更新日時
+      invitation:
+        id: ID
+        email: Eメール
+        introducer_id: 紹介者
+        introducer: 紹介者
+        token: トークン
+        expired_at: 期限日時
+        created_at: 作成日時
+        updated_at: 更新日時
+      tag:
+        id: ID
+        name: 名前
+        created_at: 作成日時
+        updated_at: 更新日時
+      user:
+        id: ID
+        nickname: ニックネーム
+        icon_url: アイコンのURL
+        introduction: 自己紹介
+        created_at: 作成日時
+        updated_at: 更新日時
+  activemodel:
+    <<: *activerecord
