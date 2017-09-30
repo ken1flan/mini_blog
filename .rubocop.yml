@@ -1,6 +1,11 @@
 Metrics/LineLength:
   Max: 100
 
+Style/Documentation:
+  Exclude:
+    - "app/decorators/*.rb"
+  Enabled: false
+
 Metrics/ModuleLength:
   Exclude:
     - "**/*_spec.rb"
