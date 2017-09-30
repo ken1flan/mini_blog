@@ -13,7 +13,9 @@
       - @blogs.each do |blog|
         %tr
           %td= blog.created_at.to_date
-          %td= link_to blog.title, blog
+          %td
+            = blog.draft_label
+            = link_to blog.title, blog
           %td= link_to blog.author.nickname, blog.author
 
 .row
