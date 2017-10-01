@@ -26,6 +26,7 @@ gem 'haml-rails'
 gem 'omniauth-google-oauth2'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'redcarpet'
+gem 'sitemap_generator'
 
 group :development, :test do
   gem 'brakeman', require: false
