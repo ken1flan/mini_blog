@@ -1,24 +1,36 @@
-# README
+# Mini Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mini Blog is nodescript blog application for my debugging rails by me.
 
-Things you may want to cover:
+## Features
+- Manage users by Google OAUTH
+- Authenticate user by Google OAUTH
+- Manage blog by author
+- Blog can be tagged
+- Create sitemap.xml
 
-* Ruby version
+# System dependencies
+- Ruby
+- PostgreSQL
+- Node
+- Google OAUTH
 
-* System dependencies
+## Optional
+- Google Webmaster Tool
+- Google Analytics
+- Google Tag Manager
 
-* Configuration
+# Development
+## Setup
+(TODO)
+Run `bin/setup`.
 
-* Database creation
+## Configration
+Edit `.env`.
 
-* Database initialization
+## Run
+Run `foreman start`.
+Visit `http://localhost:5000`.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Licence
+MIT
