@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
   def markdown_to_html(markdown_text)
     @markdown ||= Redcarpet::Markdown.new(
       Redcarpet::Render::HTML.new(hard_wrap: true),
-      autolink: true
+      autolink: true,
+      tables: true
     )
     @markdown.render(markdown_text).html_safe
   end
