@@ -4,7 +4,8 @@
       %h1
         = @blog.title
 
-      = markdown_to_html @blog.body
+      .markdown
+        = markdown_to_html @blog.body
 
       %p
         = @blog.status
