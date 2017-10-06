@@ -19,10 +19,22 @@ class ApplicationController < ActionController::Base
 
   def markdown_to_html(markdown_text)
     @markdown ||= Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML.new(hard_wrap: true),
+      markdown_renderer,
+      fenced_code_blocks: true,
       autolink: true,
       tables: true
     )
     @markdown.render(markdown_text).html_safe
+  end
+
+  private
+
+  def markdown_renderer
+    Redcarpet::Render::HTML.new(filter_html: true,
+                                hard_wrap: true,
+                                lax_html_blocks: true,
+                                no_intra_emphasis: true,
+                                strikethrough: true,
+                                superscript: true)
   end
 end
