@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.published.normal_order.page(params[:page])
+    @blogs = Blog.published.normal_order.includes(:author, :tags).page(params[:page])
   end
 
   # GET /blogs/1
@@ -63,7 +63,7 @@ class BlogsController < ApplicationController
   private
 
   def set_blog
-    @blog = Blog.find(params[:id])
+    @blog = Blog.includes(:author, :tags).find(params[:id])
   end
 
   def blog_params
