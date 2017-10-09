@@ -1,5 +1,5 @@
 .row
-  %h1 #{@user.nickname}'s blogs
+  %h1 #{link_to @user.nickname, @user}'s blogs
 
 .row
   %table.table
@@ -7,7 +7,6 @@
       %tr
         %th Date
         %th Title
-        %th Author
 
     %tbody
       - @blogs.each do |blog|
@@ -16,7 +15,8 @@
           %td
             = blog.draft_label
             = link_to blog.title, blog
-          %td= link_to blog.author.nickname, blog.author
+            - blog.tags.each do |tag|
+              = link_to tag.name, tag, class: 'btn btn-default btn-xs'
 
 .row
   = paginate @blogs
