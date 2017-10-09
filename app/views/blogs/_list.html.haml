@@ -9,5 +9,9 @@
     - blogs.each do |blog|
       %tr
         %td= blog.created_at.to_date
-        %td= link_to blog.title, blog
+        &nbsp;
+        %td
+          = link_to blog.title, blog
+          - blog.tags.each do |tag|
+            = link_to tag.name, tag, class: 'btn btn-default btn-xs'
         %td= link_to blog.author.nickname, blog.author
