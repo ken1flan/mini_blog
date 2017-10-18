@@ -1,4 +1,6 @@
 .row
+  %p
+    = render 'edit_actions', blog: @blog
   .panel.panel-default
     .panel-body
       %h1
@@ -18,9 +20,5 @@
         Written by
         = link_to @blog.author.nickname, user_path(@blog.author)
 
-  - if @blog.editable?(current_user)
-    = link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary'
-    \|
-    = link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' }
-    \|
-  = link_to 'Back', blogs_path
+  %p
+    = render 'edit_actions', blog: @blog
