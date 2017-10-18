@@ -1,0 +1,6 @@
+- if blog.editable?(current_user)
+  = link_to 'Edit', edit_blog_path(blog), class: 'btn btn-primary'
+  \|
+  = link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+  \|
+= link_to 'Back', blogs_path

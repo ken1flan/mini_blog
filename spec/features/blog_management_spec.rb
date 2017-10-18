@@ -73,7 +73,7 @@ RSpec.feature 'Blog management', type: :feature do
     expect(page).to have_content(user_blog.title)
     expect(page).to have_content(user_blog.body)
 
-    click_link 'Edit'
+    click_link 'Edit', match: :first
 
     fill_in 'form_blog_contribution[title]', with: 'Blog New Title'
     fill_in 'form_blog_contribution[body]', with: 'Blog New Body'
@@ -97,7 +97,7 @@ RSpec.feature 'Blog management', type: :feature do
     expect(page).to have_content(user_blog.title)
     expect(page).to have_content(user_blog.body)
 
-    click_link 'Destroy'
+    click_link 'Destroy', match: :first
 
     expect(page).not_to have_content(user_blog.title)
   end
