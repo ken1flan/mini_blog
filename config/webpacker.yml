@@ -9,6 +9,7 @@ default: &default
     - .coffee
     - .erb
     - .js
+    - .es6
     - .jsx
     - .ts
     - .vue
