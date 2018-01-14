@@ -17,7 +17,7 @@
 #  index_blog_tags_on_tag_id              (tag_id)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :blog_tag do
     blog nil
     tag nil

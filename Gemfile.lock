@@ -84,10 +84,10 @@ GEM
     erubis (2.7.0)
     escape_utils (1.2.1)
     execjs (2.7.0)
-    factory_girl (4.9.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     faml (0.8.1)
       escape_utils
@@ -334,7 +334,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   dotenv-rails
-  factory_girl_rails
+  factory_bot_rails
   faml
   foreman
   haml-rails

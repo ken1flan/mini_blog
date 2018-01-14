@@ -12,11 +12,9 @@
 #  updated_at   :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
-    sequence :nickname do |n|
-      "Nickname#{n}"
-    end
+    sequence(:nickname) { |n| "Nickname#{n}" }
     icon_url nil
     introduction nil
 

@@ -17,14 +17,10 @@
 #  index_blogs_on_author_id  (author_id)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :blog do
-    sequence :title do |n|
-      "title#{n}"
-    end
-    sequence :body do |n|
-      "body#{n}"
-    end
+    sequence(:title) { |n| "title#{n}" }
+    sequence(:body) { |n| "body#{n}" }
     status Blog.statuses[:published]
     author_id 1
 
