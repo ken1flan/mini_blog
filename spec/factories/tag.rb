@@ -14,7 +14,7 @@
 #  index_tags_on_name  (name) UNIQUE
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :tag do
     sequence(:name) { |n| "TagName#{n}" }
   end

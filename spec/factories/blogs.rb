@@ -17,7 +17,7 @@
 #  index_blogs_on_author_id  (author_id)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :blog do
     sequence :title do |n|
       "title#{n}"

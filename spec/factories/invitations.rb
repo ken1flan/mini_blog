@@ -18,7 +18,7 @@
 #  index_invitations_on_introducer_id  (introducer_id)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :invitation do
     email 'foo@bar.com'
     message 'Welcome!'
