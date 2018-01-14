@@ -28,6 +28,8 @@ gem 'rails-i18n', '~> 5.0.0'
 gem 'redcarpet'
 gem 'sitemap_generator'
 
+gem 'sentry-raven'
+
 group :development, :test do
   gem 'brakeman', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
