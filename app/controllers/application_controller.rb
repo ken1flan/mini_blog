@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  after_action :kittenize
 
   helper_method :user_signed_in?, :current_user, :markdown_to_html
 
@@ -36,5 +37,9 @@ class ApplicationController < ActionController::Base
                                 no_intra_emphasis: true,
                                 strikethrough: true,
                                 superscript: true)
+  end
+
+  def kittenize
+    response.body.kittenize!
   end
 end
