@@ -2,6 +2,6 @@
 
 module BlogDecorator
   def draft_label
-    content_tag 'span', class: ['label', 'label-default'] { 'draft' } if draft?
+    content_tag('span', 'draft', class: ['label', 'label-default']) if draft?
   end
 end
