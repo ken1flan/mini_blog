@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'active_decorator'
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
