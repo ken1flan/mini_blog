@@ -1,3 +1,9 @@
+Style/ClassAndModuleChildren:
+  EnforcedStyle: "compact"
+
+Style/DoubleNegation:
+  Enabled: false
+
 Style/Documentation:
   Exclude:
     - "app/decorators/*.rb"
