@@ -7,8 +7,7 @@ class SessionsController < ApplicationController
       return
     end
 
-    @user = User.find_from(auth_hash)
-    unless @user
+    unless (@user = User.find_from(auth_hash))
       redirect_to root_path, alert: 'You need to sign up.'
       return
     end

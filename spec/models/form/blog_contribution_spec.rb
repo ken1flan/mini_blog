@@ -97,7 +97,7 @@ RSpec.describe Blog, type: :model do
       let(:original) { nil }
 
       it 'is expected to raise error' do
-        expect { subject }.to raise_error
+        expect { subject }.to raise_error NoMethodError
       end
     end
 

@@ -33,9 +33,11 @@ class Invitation < ApplicationRecord
   private
 
   def set_token_and_expired_at
-    begin
-      self.token ||= SecureRandom.urlsafe_base64
-    end while Invitation.exists?(token: token)
+    loop do
+      self.token = SecureRandom.urlsafe_base64
+      break if Invitation.where(token: token).empty?
+    end
+
     self.expired_at ||= EXPIRATION_PERIOD.since
   end
 end

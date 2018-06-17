@@ -9,12 +9,13 @@ end
 
 gem 'pg', '~> 0.21'
 gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.2.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'active_decorator'
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
