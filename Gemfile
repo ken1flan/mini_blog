@@ -19,6 +19,7 @@ gem 'bootsnap'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
+gem 'kittenizer'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 2.0'
 
