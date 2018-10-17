@@ -34,7 +34,7 @@ gem 'sentry-raven'
 group :development, :test do
   gem 'brakeman', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 3.9'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'foreman'
