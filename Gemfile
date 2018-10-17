@@ -25,7 +25,7 @@ gem 'webpacker', '~> 3.5'
 gem 'faml'
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
-gem 'rails-i18n', '~> 5.0.0'
+gem 'rails-i18n', '~> 5.1', '>= 5.1.1'
 gem 'redcarpet'
 gem 'sitemap_generator'
 
