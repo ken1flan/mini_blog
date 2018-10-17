@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.1', '>= 1.1.3'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.2.0'
 gem 'sass-rails', '~> 5.0'
@@ -25,7 +25,7 @@ gem 'webpacker', '~> 3.5'
 gem 'faml'
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
-gem 'rails-i18n', '~> 5.0.0'
+gem 'rails-i18n', '~> 5.1', '>= 5.1.1'
 gem 'redcarpet'
 gem 'sitemap_generator'
 
@@ -34,7 +34,7 @@ gem 'sentry-raven'
 group :development, :test do
   gem 'brakeman', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 3.9'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'foreman'
