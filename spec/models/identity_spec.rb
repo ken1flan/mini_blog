@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: identities
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  user_id    :integer          not null
 #  provider   :string(64)       not null
 #  uid        :string(64)       not null
