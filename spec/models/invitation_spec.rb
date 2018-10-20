@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: invitations
 #
-#  id            :integer          not null, primary key
+#  id            :bigint(8)        not null, primary key
 #  email         :string(256)      not null
 #  message       :text             not null
 #  introducer_id :integer          not null

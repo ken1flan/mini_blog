@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
 #
-#  id           :integer          not null, primary key
+#  id           :bigint(8)        not null, primary key
 #  nickname     :string(64)       not null
 #  icon_url     :string
 #  introduction :text
