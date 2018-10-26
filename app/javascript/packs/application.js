@@ -10,3 +10,4 @@
 console.log('Hello World from Webpacker')
 import 'bootstrap/dist/css/bootstrap'
 import 'bootstrap/dist/js/bootstrap'
+import 'open-iconic/font/css/open-iconic-bootstrap'
