@@ -8,10 +8,10 @@
   %tbody
     - blogs.each do |blog|
       %tr
-        %td= blog.created_at.to_date
-        &nbsp;
+        %td.text-nowrap.text-lg-right
+          = blog.created_at.to_date
         %td
           = link_to blog.title, blog
           - blog.tags.each do |tag|
-            = link_to tag.name, tag, class: 'btn btn-default btn-xs'
-        %td= link_to blog.author.nickname, blog.author
+            %a.badge.badge-light{ href: tag_path(tag) }= tag.name
+        %td.text-nowrap= link_to blog.author.nickname, blog.author
