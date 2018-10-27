@@ -1,6 +1,8 @@
-- if blog.editable?(current_user)
-  = link_to 'Edit', edit_blog_path(blog), class: 'btn btn-primary'
-  \|
-  = link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
-  \|
-= link_to 'Back', blogs_path
+%ul.list-inline.mt-3
+  - if blog.editable?(current_user)
+    %li.list-inline-item
+      %a.btn.btn-primary{ href: edit_blog_path(blog) } Edit
+    %li.list-inline-item
+      = link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+  %li.list-inline-item
+    %a{ href: blogs_path } Back
