@@ -1,9 +1,14 @@
 .row
-  %h1 Editing blog
+  .col-12
+    %h1 Editing blog
 
-= render 'form', blog_contribution: @blog_contribution
+  .col-12
+    = render 'form', blog_contribution: @blog_contribution
 
 .row
-  = link_to 'Show', @blog
-  \|
-  = link_to 'Back', blogs_path
+  .col-12
+    %ul.list-inline.mt5
+      %li.list-inline-item
+        %a{ href: blog_path(@blog) } Show
+      %li.list-inline-item
+        %a{ href: blogs_path } Back
