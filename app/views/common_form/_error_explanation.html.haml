@@ -1,7 +1,7 @@
 - if errors.any?
   .alert.alert-danger#error_explanation
     .alert-heading
-      = "#{pluralize(errors.count, "error")} prohibited this blog from being saved:"
+      #{pluralize(errors.count, 'error')} prohibited this blog from being saved:
     %ul
       - errors.full_messages.each do |message|
         %li= message
