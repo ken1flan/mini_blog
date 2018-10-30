@@ -9,6 +9,9 @@
 
 .row
   .col-12
-    = link_to 'Edit', edit_user_path(@user)
-    \|
-    = link_to 'Back', users_path
+    %ul.list-inline
+      - if @user.editable?(current_user)
+        %li.list-inline-item
+          = link_to 'Edit', edit_user_path(@user)
+      %li.list-inline-item
+        = link_to 'Back', users_path

@@ -20,6 +20,10 @@ class User < ApplicationRecord
   validates :icon_url, length: { maximum: 255 }
   validates :introduction, length: { maximum: 255 }
 
+  def editable?(user)
+    self == user
+  end
+
   def self.create_with_identity(auth)
     nickname = auth[:info][:nickname]
     nickname ||= auth[:info][:name]
