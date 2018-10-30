@@ -1,28 +1,26 @@
+@import "./colors";
+
 .markdown {
   table {
-    border: 1px solid darkgray;
+    border: 1px solid $color-border;
     margin: 20px;
 
     th {
-      border: 1px solid darkgray;
-      background-color: gainsboro;
+      background-color: $color-background;
+      border: 1px solid $color-border;
       padding: 10px;
     }
 
     td {
-      border: 1px solid darkgray;
+      border: 1px solid $color-border;
       padding: 10px;
     }
   }
 
-  code {
-
-  }
-
   pre {
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 1px solid $color-border;
     border-radius: 4px;
     padding: 9.5px;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: $color-background;
   }
 }
