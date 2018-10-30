@@ -14,6 +14,30 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe '#editable?' do
+    subject { user.editable?(editor) }
+    let(:user){ create(:user) }
+    let(:another_user){ create(:user) }
+
+    context 'When editor = user' do
+      let(:editor){ user }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context 'When editor = another_user' do
+      let(:editor){ another_user }
+
+      it { is_expected.to be_falsy }
+    end
+
+    context 'When editor = nil' do
+      let(:editor){ nil }
+
+      it { is_expected.to be_falsy }
+    end
+  end
+
   describe '.create_with_identity' do
     subject(:user) { User.create_with_identity(auth) }
 
