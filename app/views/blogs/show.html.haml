@@ -1,24 +1,27 @@
 .row
-  %p
+  .col-12
     = render 'edit_actions', blog: @blog
-  .panel.panel-default
-    .panel-body
-      %h1
-        = @blog.title
+.row
+  .col-12
+    .card
+      .card-header
+        %h1.card-title.mb-0
+          = @blog.title
+        .d-inline-flex.mr-auto.my-0
+          - @blog.tags.each do |tag|
+            %a.badge.badge-light{ href: tag_path(tag) }= tag.name
+      .card-body
+        .markdown
+          = markdown_to_html @blog.body
 
-      .markdown
-        = markdown_to_html @blog.body
+        %p
+          = @blog.status
 
-      %p
-        = @blog.status
 
-      %p
-        - @blog.tags.each do |tag|
-          = link_to tag.name, tag, class: 'btn btn-sm btn-default'
-
-      %p
+      .card-footer.text-muted
         Written by
         = link_to @blog.author.nickname, user_path(@blog.author)
 
-  %p
+.row
+  .col-12
     = render 'edit_actions', blog: @blog

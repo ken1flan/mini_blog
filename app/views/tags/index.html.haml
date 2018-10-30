@@ -1,7 +1,8 @@
 .row
-  %h1 Tags
+  .col-12
+    %h1 Tags
 
 .row
-  %p
+  .col-12
     - @tags.each do |tag|
-      = link_to tag.name, tag, class: 'btn btn-default'
+      = link_to tag.name, tag, class: 'btn btn-light m-1'

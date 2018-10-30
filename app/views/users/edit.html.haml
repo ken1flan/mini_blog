@@ -1,9 +1,13 @@
 .row
-  %h1 Editing user
-
-= render 'form'
+  .col-12
+    %h1 Editing user
 
 .row
-  = link_to 'Show', @user
-  \|
-  = link_to 'Back', users_path
+  .col-12
+    = render 'form'
+
+.row
+  .col-12
+    = link_to 'Show', @user
+    \|
+    = link_to 'Back', users_path

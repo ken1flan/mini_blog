@@ -1,23 +1,25 @@
 !!!
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}
-    %meta{name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"}
+    %meta{ charset: 'utf-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
+
     %title MiniBlog
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
     = render 'layouts/external_service_tags'
   %body
     .container
-      .row
-        = render 'layouts/nav'
+      = render 'layouts/nav'
 
     - if flash
       .container
         - flash.each do |key, message|
-          %div{class: "alert alert-#{alert_type(key)}"}
+          %div{ class: "alert alert-#{alert_type(key)}" }
             = message
+
     .container
       = yield

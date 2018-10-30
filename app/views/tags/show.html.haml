@@ -1,5 +1,7 @@
 .row
-  %h1 '#{@tag.name}' tagged blogs
+  .col-12
+    %h1 '#{@tag.name}' tagged blogs
 
 .row
-  = render 'blogs/list', blogs: @blogs
+  .col-12
+    = render 'blogs/list', blogs: @blogs

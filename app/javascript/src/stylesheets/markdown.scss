@@ -1,0 +1,26 @@
+@import './colors';
+
+.markdown {
+  table {
+    border: 1px solid $color-border;
+    margin: 20px;
+
+    th {
+      background-color: $color-background;
+      border: 1px solid $color-border;
+      padding: 10px;
+    }
+
+    td {
+      border: 1px solid $color-border;
+      padding: 10px;
+    }
+  }
+
+  pre {
+    background-color: $color-background;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: 9.5px;
+  }
+}

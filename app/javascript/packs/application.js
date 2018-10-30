@@ -8,3 +8,9 @@
 // layout file, like app/views/layouts/application.html.erb
 
 console.log('Hello World from Webpacker')
+import 'bootstrap/dist/css/bootstrap'
+import 'src/stylesheets/nav'
+import 'src/stylesheets/markdown'
+
+import 'bootstrap/dist/js/bootstrap'
+import 'open-iconic/font/css/open-iconic-bootstrap'

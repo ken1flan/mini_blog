@@ -1,8 +1,11 @@
 .row
-  %h1 Listing blogs
+  .col-12
+    %h1 Listing blogs
 
 .row
-  = render 'list', blogs: @blogs
+  .col-12
+    = render 'list', blogs: @blogs
 
 .row
-  = paginate @blogs
+  .col-12
+    = paginate @blogs
