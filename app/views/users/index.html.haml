@@ -1,20 +1,24 @@
-%h1 Listing users
+.row
+  .col-12
+    %h1 Listing users
 
-%table.table
-  %thead
-    %tr
-      %th
-      %th Nickname
-      %th Introduction
-      %th
+.row
+  .col-12
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Nickname
+          %th Introduction
+          %th
 
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td= image_tag user.icon_url, height: 50
-        %td= link_to user.nickname, user
-        %td= user.introduction
-        %td
-          - if editable_user?(user)
-            = link_to 'Edit', edit_user_path(user)
-            = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= image_tag user.icon_url, height: 50
+            %td= link_to user.nickname, user
+            %td= user.introduction
+            %td
+              - if editable_user?(user)
+                = link_to 'Edit', edit_user_path(user)
+                = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
