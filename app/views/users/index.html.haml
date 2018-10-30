@@ -19,6 +19,6 @@
             %td= link_to user.nickname, user
             %td= user.introduction
             %td
-              - if editable_user?(user)
+              - if user.editable?(current_user)
                 = link_to 'Edit', edit_user_path(user)
                 = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }

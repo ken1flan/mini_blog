@@ -14,11 +14,15 @@ class UsersController < ApplicationController
   def show; end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    not_found unless @user.editable?(current_user)
+  end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    not_found unless @user.editable?(current_user)
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -33,6 +37,8 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    not_found unless @user.editable?(current_user)
+
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
