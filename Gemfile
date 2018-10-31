@@ -51,6 +51,14 @@ group :development do
   gem 'annotate'
   gem 'bullet', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pronto'
+  gem 'pronto-brakeman', require: false
+  gem 'pronto-eslint', require: false
+  gem 'pronto-haml', require: false
+  gem 'pronto-rails_best_practices', require: false
+  gem 'pronto-reek', require: false
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-scss', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
