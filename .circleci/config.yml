@@ -23,7 +23,7 @@ jobs:
           key: mini_blog-yarn-{{ checksum "yarn.lock" }}
       - run:
           name: Bundle Install
-          command: bin/bundle check  --path vendor/bundle ||  bin/bundle install --path vendor/bundle --jobs 4 --retry 3
+          command: bin/bundle check --path vendor/bundle ||  bin/bundle install --without development --path vendor/bundle --jobs 4 --retry 3
       - run:
           name: Yarn Install
           command: bin/yarn install

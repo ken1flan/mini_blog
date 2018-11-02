@@ -32,6 +32,8 @@ gem 'sitemap_generator'
 gem 'sentry-raven'
 
 group :development, :test do
+  gem 'annotate'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'brakeman', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.9'
@@ -48,9 +50,15 @@ group :development, :test do
 end
 
 group :development do
-  gem 'annotate'
   gem 'bullet', require: false
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pronto'
+  gem 'pronto-brakeman', require: false
+  gem 'pronto-eslint', require: false
+  gem 'pronto-haml', require: false
+  gem 'pronto-rails_best_practices', require: false
+  gem 'pronto-reek', require: false
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-scss', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
