@@ -20,11 +20,11 @@ FactoryBot.define do
   factory :blog do
     sequence(:title) { |n| "title#{n}" }
     sequence(:body) { |n| "body#{n}" }
-    status Blog.statuses[:published]
-    author_id 1
+    status { Blog.statuses[:published] }
+    author_id { 1 }
 
     trait :draft do
-      status Blog.statuses[:draft]
+      status { Blog.statuses[:draft] }
     end
 
     trait :with_author do
@@ -35,7 +35,7 @@ FactoryBot.define do
 
     trait :tagged do
       transient do
-        tags []
+        tags { [] }
       end
 
       after(:create) do |blog, evaluator|

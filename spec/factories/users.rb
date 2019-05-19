@@ -14,8 +14,8 @@
 FactoryBot.define do
   factory :user do
     sequence(:nickname) { |n| "Nickname#{n}" }
-    icon_url nil
-    introduction nil
+    icon_url { nil }
+    introduction { nil }
 
     trait :with_identity do
       after(:create) do |user|
