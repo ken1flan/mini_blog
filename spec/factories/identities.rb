@@ -18,8 +18,8 @@
 
 FactoryBot.define do
   factory :identity do
-    user_id nil
-    provider 'google_oauth2'
+    user_id { nil }
+    provider { 'google_oauth2' }
     sequence(:uid) { |n| "uid#{n}" }
   end
 end

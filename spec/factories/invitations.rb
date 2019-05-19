@@ -19,11 +19,11 @@
 
 FactoryBot.define do
   factory :invitation do
-    email 'foo@bar.com'
-    message 'Welcome!'
-    introducer_id 1
-    token nil
-    expired_at nil
+    email { 'foo@bar.com' }
+    message { 'Welcome!' }
+    introducer_id { 1 }
+    token { nil }
+    expired_at { nil }
 
     trait :with_introducer do
       after(:build) do |invitation|
@@ -33,7 +33,7 @@ FactoryBot.define do
     end
 
     trait :expired do
-      expired_at 1.day.ago
+      expired_at { 1.day.ago }
     end
   end
 end
