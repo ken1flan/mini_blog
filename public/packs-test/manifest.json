@@ -1,3 +1,10 @@
 {
-  "application.js": "/packs-test/application.js"
+  "_/_/node_modules/open-iconic/font/fonts/open-iconic.eot": "/packs-test/_/_/node_modules/open-iconic/font/fonts/open-iconic-47151e87c5a8666791a91007de4962da.eot",
+  "_/_/node_modules/open-iconic/font/fonts/open-iconic.svg": "/packs-test/_/_/node_modules/open-iconic/font/fonts/open-iconic-eca2c26759a009a4a9361151efe99e74.svg",
+  "_/_/node_modules/open-iconic/font/fonts/open-iconic.ttf": "/packs-test/_/_/node_modules/open-iconic/font/fonts/open-iconic-93cc7aa654ae36b0828716f5ec3159cd.ttf",
+  "_/_/node_modules/open-iconic/font/fonts/open-iconic.woff": "/packs-test/_/_/node_modules/open-iconic/font/fonts/open-iconic-3cf97837524dd7445e9d1462e3c4afe2.woff",
+  "application.css": "/packs-test/application-a2238ed47cd15df9cfab54c4ac921e5a.css",
+  "application.css.map": "/packs-test/application-a2238ed47cd15df9cfab54c4ac921e5a.css.map",
+  "application.js": "/packs-test/application-07c40c516d7f00e0d907.js",
+  "application.js.map": "/packs-test/application-07c40c516d7f00e0d907.js.map"
 }
