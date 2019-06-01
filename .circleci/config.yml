@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/mini_blog
     docker:
-      - image: circleci/ruby:2.5.1-node
+      - image: circleci/ruby:2.6.3-node
         environment:
           PGHOST: 127.0.0.1
           PGUSER: ubuntu
