@@ -64,4 +64,4 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-ruby '2.5.1'
+ruby '2.6.3'
