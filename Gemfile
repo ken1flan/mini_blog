@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', '~> 4.0'
 
 gem 'faml'
 gem 'haml-rails'
