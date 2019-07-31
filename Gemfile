@@ -36,7 +36,7 @@ group :development, :test do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'brakeman', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 3.9'
+  gem 'capybara', '~> 3.27'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'foreman'
