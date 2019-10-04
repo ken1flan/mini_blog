@@ -9,7 +9,7 @@ end
 
 gem 'pg', '~> 1.1', '>= 1.1.3'
 gem 'puma', '~> 4.2'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -25,7 +25,7 @@ gem 'webpacker', '~> 4.0'
 gem 'faml'
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
-gem 'rails-i18n', '~> 5.1', '>= 5.1.1'
+gem 'rails-i18n', '~> 6.0.0'
 gem 'redcarpet'
 gem 'sitemap_generator'
 
