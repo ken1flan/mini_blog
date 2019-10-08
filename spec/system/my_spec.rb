@@ -19,7 +19,8 @@ RSpec.describe 'My', type: :system do
     it 'displays my page' do
       visit my_index_path
 
-      expect(page.text).to have_text('My page')
+      expect(page).to have_text('My page')
+      expect(page).to have_text(user.nickname)
     end
   end
 end
