@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def require_signed_in
+    return if user_signed_in?
+
+    flash[:error] = 'You must be logged in to access this section.'
+    redirect_to root_path
+  end
+
   def markdown_to_html(markdown_text)
     @markdown ||= Redcarpet::Markdown.new(
       markdown_renderer,

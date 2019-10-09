@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   end
   resources :tags, only: %i[index show]
 
+  resources :my, only: :index
+
   get '/sign_up', to: 'sign_up#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/signout', to: 'sessions#destroy', as: :signout
