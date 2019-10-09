@@ -1,0 +1,25 @@
+.row
+  .col-12
+    %h1 My blogs
+
+.row
+  .col-12
+    %table.table
+      %thead
+        %tr
+          %th Date
+          %th Title
+
+      %tbody
+        - @blogs.each do |blog|
+          %tr
+            %td= blog.created_at.to_date
+            %td
+              = blog.draft_label
+              = link_to blog.title, blog
+              - blog.tags.each do |tag|
+                %a.badge.badge-light{ href: tag_path(tag) }= tag.name
+
+.row
+  .col-12
+    = paginate @blogs

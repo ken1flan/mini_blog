@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :tags, only: %i[index show]
 
   resources :my, only: :index
+  namespace :my do
+    resources :blogs, only: :index
+  end
 
   get '/sign_up', to: 'sign_up#index'
   get '/auth/:provider/callback', to: 'sessions#create'
