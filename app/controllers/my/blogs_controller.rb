@@ -6,4 +6,8 @@ class My::BlogsController < ApplicationController
   def index
     @blogs = current_user.blogs.normal_order.includes(:author, :tags).page(params[:page])
   end
+
+  def show
+    @blog = current_user.blogs.find(params[:id])
+  end
 end

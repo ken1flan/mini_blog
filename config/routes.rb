@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :my, only: :index
   namespace :my do
-    resources :blogs, only: :index
+    resources :blogs, only: %i[index show]
   end
 
   get '/sign_up', to: 'sign_up#index'
