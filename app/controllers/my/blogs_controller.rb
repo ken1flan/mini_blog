@@ -2,7 +2,7 @@
 
 class My::BlogsController < ApplicationController
   before_action :require_signed_in
-  before_action :set_blog, only: %i[show edit update]
+  before_action :set_blog, only: %i[show edit update destroy]
 
   def index
     @blogs = current_user.blogs.normal_order.includes(:author, :tags).page(params[:page])
@@ -40,6 +40,11 @@ class My::BlogsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @blog.destroy
+    redirect_to my_blogs_url, notice: 'Blog was successfully destroyed.'
   end
 
   private
