@@ -1,0 +1,7 @@
+%ul.list-inline.mt-3
+  %li.list-inline-item
+    %a.btn.btn-primary{ href: edit_my_blog_path(blog) } Edit
+  %li.list-inline-item
+    = link_to 'Destroy', my_blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' }
+  %li.list-inline-item
+    %a{ href: my_blogs_path } Back

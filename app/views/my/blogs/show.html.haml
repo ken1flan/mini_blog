@@ -1,5 +1,8 @@
 .row
   .col-12
+    = render 'actions', blog: @blog
+.row
+  .col-12
     .card
       .card-header
         %h1.card-title.mb-0
@@ -13,3 +16,6 @@
 
         %p
           = @blog.status
+.row
+  .col-12
+    = render 'actions', blog: @blog

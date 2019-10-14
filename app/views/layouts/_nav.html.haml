@@ -11,7 +11,7 @@
     %ul.navbar-nav.mr-auto
       - if user_signed_in?
         %li.nav-item{ class: current_page?(user_blogs_path(current_user)) ? 'active' : '' }
-          %a.nav-link{ href: user_blogs_path(current_user) }
+          %a.nav-link{ href: my_blogs_path }
             My Blogs
             - if current_page?(user_blogs_path(current_user))
               %span.sr-only (current)
@@ -30,7 +30,7 @@
     %ul.navbar-nav.ml-auto
       - if user_signed_in?
         %li.nav-item.mx-2
-          %a.btn.btn-primary{ href: new_blog_path }
+          %a.btn.btn-primary{ href: new_my_blog_path }
             = icon(:pencil)
             New Blog
         %li.nav-item.dropdown.mx-2.my-auto
