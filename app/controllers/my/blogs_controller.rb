@@ -8,6 +8,22 @@ class My::BlogsController < ApplicationController
     @blogs = current_user.blogs.normal_order.includes(:author, :tags).page(params[:page])
   end
 
+  def new
+    @blog_contribution = Form::BlogContribution.new
+    @blog_contribution.blog = current_user.blogs.new
+  end
+
+  def create
+    @blog_contribution = Form::BlogContribution.new(blog_params)
+    @blog_contribution.blog = current_user.blogs.new
+
+    if @blog_contribution.save
+      redirect_to blog_path(id: @blog_contribution.blog.id), notice: 'Blog was successfully created.'
+    else
+      render :new
+    end
+  end
+
   def show
     # Only before action
   end

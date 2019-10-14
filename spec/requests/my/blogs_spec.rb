@@ -25,6 +25,69 @@ RSpec.describe 'My::Blogs', type: :request do
     end
   end
 
+  describe 'GET /my/blogs/new' do
+    context 'When user does not logged in' do
+      it 'is returned 302' do
+        get new_my_blog_path
+        expect(response).to have_http_status(302)
+      end
+    end
+
+    context 'When user logged in' do
+      let(:user) { create(:user, :with_identity) }
+
+      before do
+        sign_in(user)
+      end
+
+      it 'is returned 200 OK' do
+        get new_my_blog_path
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+  describe 'POST /my/blogs' do
+    context 'When user does not logged in' do
+      it 'is returned 302' do
+        post my_blogs_path
+        expect(response).to have_http_status(302)
+      end
+    end
+
+    context 'When user logged in' do
+      let(:user) { create(:user, :with_identity) }
+
+      before do
+        sign_in(user)
+      end
+
+      context 'When blog is written by user' do
+        context 'With valid params' do
+          let(:params) { { form_blog_contribution: { title: 'new title', body: 'new body' } } }
+
+          it 'is returned 200 OK' do
+            post my_blogs_path, params: params
+            expect(response).to have_http_status(200)
+            body = response.body
+            expect(body).to include 'new title'
+            expect(body).to include 'new body'
+          end
+        end
+
+        context 'With invalid params' do
+          let(:params) { { form_blog_contribution: { title: '', body: 'new body' } } }
+
+          it 'is returned 200 OK' do
+            post my_blogs_path, params: params
+            expect(response).to have_http_status(200)
+            expect(response).to render_template(:new)
+          end
+        end
+      end
+    end
+  end
+
   describe 'GET /my/blogs/:id' do
     let(:other_user_blog) { create(:blog, author) }
 
