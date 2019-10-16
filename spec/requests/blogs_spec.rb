@@ -25,4 +25,13 @@ RSpec.describe 'Blogs', type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'GET /blogs' do
+    let(:blog) { create(:blog, :with_author) }
+
+    it 'works! (now write some real specs)' do
+      get blog_path(blog)
+      expect(response).to have_http_status(200)
+    end
+  end
 end
