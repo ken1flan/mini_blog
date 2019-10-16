@@ -22,7 +22,6 @@ gem 'kaminari'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
-gem 'faml'
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
 gem 'rails-i18n', '~> 6.0.0'
