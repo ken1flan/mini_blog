@@ -113,7 +113,6 @@ GEM
     equalizer (0.0.11)
     erubi (1.9.0)
     erubis (2.7.0)
-    escape_utils (1.2.1)
     eslintrb (2.1.0)
       execjs
       multi_json (>= 1.3)
@@ -124,12 +123,6 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
-    faml (0.8.1)
-      escape_utils
-      haml_parser (>= 0.4.0)
-      parser
-      temple (>= 0.7.0)
-      tilt
     faraday (0.16.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
@@ -153,7 +146,6 @@ GEM
       rainbow
       rubocop (>= 0.50.0)
       sysexits (~> 1.1)
-    haml_parser (0.4.1)
     hashie (3.6.0)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
@@ -454,7 +446,6 @@ DEPENDENCIES
   coffee-rails (~> 5.0)
   dotenv-rails
   factory_bot_rails
-  faml
   foreman
   haml-rails
   jbuilder (~> 2.5)
