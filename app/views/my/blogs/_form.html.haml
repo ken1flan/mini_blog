@@ -1,5 +1,10 @@
-- method = blog_contribution.blog.new_record? ? :post : :patch
-= form_for blog_contribution, url: blog_contribution.blog, method: method do |f|
+- if blog_contribution.blog.new_record?
+  - method = :post
+  - url = my_blogs_path
+- else
+  - method = :patch
+  - url = my_blog_path(blog_contribution.blog)
+= form_for blog_contribution, url: url, method: method do |f|
   = render 'common_form/error_explanation', errors: blog_contribution.errors
 
   .field.form-group

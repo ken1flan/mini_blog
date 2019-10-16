@@ -1,0 +1,21 @@
+.row
+  .col-12
+    = render 'actions', blog: @blog
+.row
+  .col-12
+    .card
+      .card-header
+        %h1.card-title.mb-0
+          = @blog.title
+        .d-inline-flex.mr-auto.my-0
+          - @blog.tags.each do |tag|
+            %a.badge.badge-light{ href: tag_path(tag) }= tag.name
+      .card-body
+        .markdown
+          = markdown_to_html @blog.body
+
+        %p
+          = @blog.status
+.row
+  .col-12
+    = render 'actions', blog: @blog
