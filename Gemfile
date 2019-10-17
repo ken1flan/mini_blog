@@ -67,4 +67,4 @@ group :test do
   gem 'rails-controller-testing'
 end
 
-ruby '2.6.3'
+ruby '2.6.5'
