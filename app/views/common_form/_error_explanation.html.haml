@@ -1,5 +1,9 @@
 - if errors.any?
+  -#
+    haml-lint:disable IdNames
+    Because rails uses 'error_explanation'
   .alert.alert-danger#error_explanation
+    -# haml-lint:enable IdNames
     .alert-heading
       #{pluralize(errors.count, 'error')} prohibited this blog from being saved:
     %ul
