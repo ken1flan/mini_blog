@@ -20,8 +20,11 @@
               - blog.tags.each do |tag|
                 %a.badge.badge-light{ href: tag_path(tag) }= tag.name
             %td
-              %a.btn.btn-primary.btn-sm{ href: edit_my_blog_path(blog) }Edit
-              %a.btn.btn-outline-danger.btn-sm{ href: my_blog_path(blog), data: { method: :delete, confirm: 'Are you sure?' } } Destroy
+              %a.btn.btn-primary.btn-sm{ href: edit_my_blog_path(blog) } Edit
+              %a.btn.btn-outline-danger.btn-sm{ href: my_blog_path(blog),
+                                                data: { method: :delete,
+                                                        confirm: 'Are you sure?' } }
+                Destroy
 .row
   .col-12
     = paginate @blogs
