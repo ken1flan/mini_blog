@@ -12,6 +12,7 @@ class Form::BlogContribution
 
   def save
     return false unless valid?
+
     blog.attributes = { author: author, title: title, body: body, status: status }
     blog.save
     blog.tags = []

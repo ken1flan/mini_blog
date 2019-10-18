@@ -186,7 +186,7 @@ RSpec.describe 'My::Blogs', type: :request do
       context 'When blog is written by user' do
         let(:blog) { create(:blog, author: user) }
 
-        context "With valid params" do
+        context 'With valid params' do
           let(:params) { { form_blog_contribution: { title: 'updated title', body: 'updated body' } } }
 
           it 'is returned 200 OK' do
@@ -241,11 +241,10 @@ RSpec.describe 'My::Blogs', type: :request do
       context 'When blog is written by user' do
         let(:blog) { create(:blog, author: user) }
 
-        context "With valid params" do
+        context 'With valid params' do
           it 'is returned 200 OK' do
             delete my_blog_path(blog.id)
             expect(response).to have_http_status(302)
-            body = response.body
             expect { Blog.find(blog.id) }.to raise_error(ActiveRecord::RecordNotFound)
           end
         end

@@ -32,13 +32,13 @@ gem 'sentry-raven'
 
 group :development, :test do
   gem 'annotate'
-  gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'brakeman', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.29'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'foreman'
+  gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rails_best_practices', require: false
