@@ -245,7 +245,6 @@ RSpec.describe 'My::Blogs', type: :request do
           it 'is returned 200 OK' do
             delete my_blog_path(blog.id)
             expect(response).to have_http_status(302)
-            body = response.body
             expect { Blog.find(blog.id) }.to raise_error(ActiveRecord::RecordNotFound)
           end
         end
