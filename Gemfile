@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 4.1'
 
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
