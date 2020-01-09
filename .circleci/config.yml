@@ -47,9 +47,9 @@ jobs:
       - run:
           name: Pronto
           command: |
-            export PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
+            export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
             echo $CIRCLE_PULL_REQUEST
-            echo $PULL_REQUEST_ID
+            echo $PRONTO_PULL_REQUEST_ID
             bundle exec pronto run -f github_pr -c origin/master
       - run:
           name: Wait for DB
