@@ -1,2 +1,4 @@
-verbose: false
 max_warnings: 150
+verbose: false
+github_pr_review:
+  format: "**[%{runner}/%{level}]** %{msg}"

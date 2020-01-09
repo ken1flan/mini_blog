@@ -29,6 +29,6 @@ class Blog < ApplicationRecord
   scope :normal_order, -> { order('blogs.created_at DESC') }
 
   def editable?(user)
-    author == user
+      author == user
   end
 end
