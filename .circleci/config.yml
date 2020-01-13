@@ -50,7 +50,7 @@ jobs:
             export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
             echo $CIRCLE_PULL_REQUEST
             echo $PRONTO_PULL_REQUEST_ID
-            bundle exec pronto run -f github_pr -c origin/master
+            bundle exec pronto run -f github_pr_review -c origin/master
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
