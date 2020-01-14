@@ -63,7 +63,7 @@ jobs:
             export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
             echo $CIRCLE_PULL_REQUEST
             echo $PRONTO_PULL_REQUEST_ID
-            bin/bundle exec pronto run -f github_pr_review -c origin/master
+            bin/bundle exec pronto run -f github_pr_review -c origin/master --exit-code
   rspec:
     executor: my-executor
     working_directory: ~/mini_blog
