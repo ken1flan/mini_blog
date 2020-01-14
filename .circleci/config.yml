@@ -8,6 +8,7 @@ executors:
           PGHOST: 127.0.0.1
           PGUSER: ubuntu
           DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/mini_blog_test
+          BUNDLE_APP_CONFIG: .bundle
       - image: circleci/postgres:9.6.4-alpine
         environment:
           POSTGRES_USER: ubuntu
