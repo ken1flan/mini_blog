@@ -1,7 +1,7 @@
 version: 2.1
-jobs:
-  build:
-    working_directory: ~/mini_blog
+
+executors:
+  my-executor:
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
@@ -13,6 +13,11 @@ jobs:
           POSTGRES_USER: ubuntu
           POSTGRES_DB: mini_blog_test
           POSTGRES_PASSWORD: ""
+
+jobs:
+  build:
+    executor: my-executor
+    working_directory: ~/mini_blog
     steps:
       - checkout
       - run:
