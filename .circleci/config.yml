@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  jq: circleci/jq@1.9.1
+
 executors:
   my-executor:
     docker:
@@ -57,26 +60,20 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - jq/install:
+          install-dir: ./bin
       - run:
           name: Pronto
           command: |
             export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
-            echo $CIRCLE_PULL_REQUEST
-            echo $PRONTO_PULL_REQUEST_ID
-            bin/bundle exec pronto run -f github_pr_review -c origin/master --exit-code
+            base_branch=`curl -sH "Authorization: token ${PRONTO_GITHUB_ACCESS_TOKEN}" "https://api.github.com/repos/ken1flan/mini_blog/pulls/${PRONTO_PULL_REQUEST_ID}" | jq -r '.base.ref'`
+            bin/bundle exec pronto run -f github_pr_review -c origin/${base_branch} --exit-code
   rspec:
     executor: my-executor
     working_directory: ~/mini_blog
     steps:
       - attach_workspace:
           at: .
-      - run:
-          name: Pronto
-          command: |
-            export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
-            echo $CIRCLE_PULL_REQUEST
-            echo $PRONTO_PULL_REQUEST_ID
-            bin/bundle exec pronto run -f github_pr_review -c origin/master
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
