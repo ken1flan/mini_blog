@@ -54,7 +54,7 @@ jobs:
           paths:
             - ./
 
-  pronto:
+  code_analysis:
     executor: my-executor
     working_directory: ~/mini_blog
     steps:
@@ -68,7 +68,7 @@ jobs:
             export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
             base_branch=`curl -sH "Authorization: token ${PRONTO_GITHUB_ACCESS_TOKEN}" "https://api.github.com/repos/ken1flan/mini_blog/pulls/${PRONTO_PULL_REQUEST_ID}" | jq -r '.base.ref'`
             bin/bundle exec pronto run -f github_pr_review -c origin/${base_branch} --exit-code
-  rspec:
+  test:
     executor: my-executor
     working_directory: ~/mini_blog
     steps:
@@ -100,9 +100,9 @@ workflows:
   build:
     jobs:
       - prepare
-      - pronto:
+      - code_analysis:
           requires:
             - prepare
-      - rspec:
+      - test:
           requires:
             - prepare
