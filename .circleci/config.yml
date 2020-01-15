@@ -1,24 +1,32 @@
 version: 2.1
-jobs:
-  build:
-    working_directory: ~/mini_blog
+
+orbs:
+  jq: circleci/jq@1.9.1
+
+executors:
+  my-executor:
     docker:
       - image: circleci/ruby:2.7.0-node-browsers
         environment:
           PGHOST: 127.0.0.1
           PGUSER: ubuntu
           DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/mini_blog_test
+          BUNDLE_APP_CONFIG: .bundle
       - image: circleci/postgres:9.6.4-alpine
         environment:
           POSTGRES_USER: ubuntu
           POSTGRES_DB: mini_blog_test
           POSTGRES_PASSWORD: ""
+
+jobs:
+  prepare:
+    executor: my-executor
+    working_directory: ~/mini_blog
     steps:
       - checkout
       - run:
-          name: Run chromedriver
-          command: chromedriver
-          background: true
+          name: Install cmake
+          command: 'sudo apt-get update && sudo apt-get install -y cmake'
       - restore_cache:
           name: Restore bundle cache
           key: mini_blog-bundle-{{ checksum "Gemfile.lock" }}
@@ -41,12 +49,41 @@ jobs:
           key: mini_blog-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.yarn-cache
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./
+
+  code_analysis:
+    executor: my-executor
+    working_directory: ~/mini_blog
+    steps:
+      - attach_workspace:
+          at: .
+      - jq/install:
+          install-dir: ./bin
+      - run:
+          name: Pronto
+          command: |
+            export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
+            base_branch=`curl -sH "Authorization: token ${PRONTO_GITHUB_ACCESS_TOKEN}" "https://api.github.com/repos/ken1flan/mini_blog/pulls/${PRONTO_PULL_REQUEST_ID}" | jq -r '.base.ref'`
+            bin/bundle exec pronto run -f github_pr_review -c origin/${base_branch} --exit-code
+  test:
+    executor: my-executor
+    working_directory: ~/mini_blog
+    steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
+      - run:
+          name: Run chromedriver
+          command: chromedriver
+          background: true
       - run:
           name: RSpec
           command: |
@@ -58,3 +95,14 @@ jobs:
               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - store_test_results:
           path: /tmp/test-results
+
+workflows:
+  build:
+    jobs:
+      - prepare
+      - code_analysis:
+          requires:
+            - prepare
+      - test:
+          requires:
+            - prepare
