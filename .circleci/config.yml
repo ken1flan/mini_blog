@@ -103,6 +103,10 @@ workflows:
       - code_analysis:
           requires:
             - prepare
+          filters:
+            branches:
+              ignore:
+                - master
       - test:
           requires:
             - prepare
