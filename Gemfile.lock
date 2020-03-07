@@ -295,7 +295,7 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_best_practices (1.19.5)
+    rails_best_practices (1.20.0)
       activesupport
       code_analyzer (>= 0.5.1)
       erubis
@@ -382,7 +382,7 @@ GEM
       rubyzip (>= 1.2.2)
     sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
-    sexp_processor (4.13.0)
+    sexp_processor (4.14.1)
     sitemap_generator (6.1.0)
       builder (~> 3.0)
     spring (2.1.0)
