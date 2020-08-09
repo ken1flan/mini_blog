@@ -14,7 +14,7 @@ gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'active_decorator'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.15'
 gem 'bootsnap'
 gem 'coffee-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.10'
