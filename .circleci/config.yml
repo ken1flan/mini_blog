@@ -63,22 +63,11 @@ jobs:
       - jq/install:
           install-dir: ./bin
       - run:
-          name: rubocop version
-          command: bin/bundle exec rubocop --version > rubocop_version.txt
-      - restore_cache:
-          name: Restore rubocop cache
-          key: rubocop-{{ checksum "rubocop_version.txt" }}
-      - run:
           name: Pronto
           command: |
             export PRONTO_PULL_REQUEST_ID=`echo "${CIRCLE_PULL_REQUEST}" | grep -oE '[0-9]+$'`
             base_branch=`curl -sH "Authorization: token ${PRONTO_GITHUB_ACCESS_TOKEN}" "https://api.github.com/repos/ken1flan/mini_blog/pulls/${PRONTO_PULL_REQUEST_ID}" | jq -r '.base.ref'`
             bin/bundle exec pronto run -f github_pr_review -c origin/${base_branch} --exit-code
-      - save_cache:
-          name: Store rubocop cache
-          key: rubocop-{{ checksum "rubocop_version.txt" }}
-          paths:
-            - ~/.cache/rubocop
   test:
     executor: my-executor
     working_directory: ~/mini_blog
