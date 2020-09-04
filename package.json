@@ -21,7 +21,7 @@
     "glob": "^7.1.2",
     "jquery": "^3.5.0",
     "js-yaml": "^3.9.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.13.1",
     "open-iconic": "^1.1.1",
     "path-complete-extname": "^0.1.0",
     "popper.js": "^1.14.4",
