@@ -1,9 +1,9 @@
-FROM ruby:2.7.0
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs cmake postgresql
+FROM circleci/ruby:2.7.0-node-browsers
+RUN sudo apt-get update -qq && sudo apt-get install -y cmake
 RUN mkdir -p /tmp/mini_blog
 WORKDIR /tmp/mini_blog
 ADD Gemfile /tmp/mini_blog/Gemfile
 ADD Gemfile.lock /tmp/mini_blog/Gemfile.lock
 RUN bundle install
-RUN mkdir -p /mini_blog
+RUN sudo mkdir -p /mini_blog
 WORKDIR /mini_blog
