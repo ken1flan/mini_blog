@@ -1,5 +1,5 @@
 FROM circleci/ruby:2.7.0-node-browsers
-RUN sudo apt-get update -qq && sudo apt-get install -y cmake
+RUN sudo apt-get update -qq && sudo apt-get install -y cmake postgresql
 RUN mkdir -p /tmp/mini_blog
 WORKDIR /tmp/mini_blog
 ADD Gemfile /tmp/mini_blog/Gemfile
