@@ -6,3 +6,6 @@
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','#{ENV['GOOGLE_TAG_MANAGER_ID']}');
+-# Google Ad Sense
+- src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+%script{ 'data-ad-client': ENV['GOOGLE_AD_SENSE_ID'], async: true, src: src }
