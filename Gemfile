@@ -34,7 +34,7 @@ group :development, :test do
   gem 'annotate'
   gem 'brakeman', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 3.33'
+  gem 'capybara', '~> 3.34'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'foreman'
