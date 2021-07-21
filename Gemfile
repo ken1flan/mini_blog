@@ -38,7 +38,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'foreman'
-  gem 'listen', '>= 3.0.5', '< 3.3'
+  gem 'listen', '>= 3.0.5', '< 3.7'
   gem 'pronto'
   gem 'pronto-brakeman', require: false
   gem 'pronto-eslint', require: false
